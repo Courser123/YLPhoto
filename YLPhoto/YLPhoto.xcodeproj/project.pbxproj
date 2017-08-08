@@ -7,50 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		131329181F39DE5800E6F770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 131329171F39DE5800E6F770 /* main.m */; };
-		1313291B1F39DE5800E6F770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313291A1F39DE5800E6F770 /* AppDelegate.m */; };
-		1313291E1F39DE5800E6F770 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313291D1F39DE5800E6F770 /* ViewController.m */; };
-		131329211F39DE5800E6F770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1313291F1F39DE5800E6F770 /* Main.storyboard */; };
-		131329231F39DE5800E6F770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 131329221F39DE5800E6F770 /* Assets.xcassets */; };
-		131329261F39DE5800E6F770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131329241F39DE5800E6F770 /* LaunchScreen.storyboard */; };
-		131329311F39DE5800E6F770 /* YLPhotoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 131329301F39DE5800E6F770 /* YLPhotoTests.m */; };
+		1326350E1F39FEED009B1234 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1326350D1F39FEED009B1234 /* main.m */; };
+		132635111F39FEED009B1234 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 132635101F39FEED009B1234 /* AppDelegate.m */; };
+		132635141F39FEED009B1234 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132635131F39FEED009B1234 /* ViewController.m */; };
+		132635171F39FEED009B1234 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 132635151F39FEED009B1234 /* Main.storyboard */; };
+		132635191F39FEED009B1234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132635181F39FEED009B1234 /* Assets.xcassets */; };
+		1326351C1F39FEED009B1234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1326351A1F39FEED009B1234 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1313292D1F39DE5800E6F770 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1313290B1F39DE5800E6F770 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 131329121F39DE5800E6F770;
-			remoteInfo = YLPhoto;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		131329131F39DE5800E6F770 /* YLPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		131329171F39DE5800E6F770 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		131329191F39DE5800E6F770 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1313291A1F39DE5800E6F770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1313291C1F39DE5800E6F770 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1313291D1F39DE5800E6F770 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		131329201F39DE5800E6F770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		131329221F39DE5800E6F770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		131329251F39DE5800E6F770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		131329271F39DE5800E6F770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1313292C1F39DE5800E6F770 /* YLPhotoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YLPhotoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		131329301F39DE5800E6F770 /* YLPhotoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YLPhotoTests.m; sourceTree = "<group>"; };
-		131329321F39DE5800E6F770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		132635091F39FEED009B1234 /* YLPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1326350D1F39FEED009B1234 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1326350F1F39FEED009B1234 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		132635101F39FEED009B1234 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		132635121F39FEED009B1234 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		132635131F39FEED009B1234 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		132635161F39FEED009B1234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		132635181F39FEED009B1234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1326351B1F39FEED009B1234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1326351D1F39FEED009B1234 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		131329101F39DE5800E6F770 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		131329291F39DE5800E6F770 /* Frameworks */ = {
+		132635061F39FEED009B1234 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,67 +39,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1313290A1F39DE5800E6F770 = {
+		132635001F39FEED009B1234 = {
 			isa = PBXGroup;
 			children = (
-				131329151F39DE5800E6F770 /* YLPhoto */,
-				1313292F1F39DE5800E6F770 /* YLPhotoTests */,
-				131329141F39DE5800E6F770 /* Products */,
+				1326350B1F39FEED009B1234 /* YLPhoto */,
+				1326350A1F39FEED009B1234 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		131329141F39DE5800E6F770 /* Products */ = {
+		1326350A1F39FEED009B1234 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				131329131F39DE5800E6F770 /* YLPhoto.app */,
-				1313292C1F39DE5800E6F770 /* YLPhotoTests.xctest */,
+				132635091F39FEED009B1234 /* YLPhoto.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		131329151F39DE5800E6F770 /* YLPhoto */ = {
+		1326350B1F39FEED009B1234 /* YLPhoto */ = {
 			isa = PBXGroup;
 			children = (
-				131329191F39DE5800E6F770 /* AppDelegate.h */,
-				1313291A1F39DE5800E6F770 /* AppDelegate.m */,
-				1313291C1F39DE5800E6F770 /* ViewController.h */,
-				1313291D1F39DE5800E6F770 /* ViewController.m */,
-				1313291F1F39DE5800E6F770 /* Main.storyboard */,
-				131329221F39DE5800E6F770 /* Assets.xcassets */,
-				131329241F39DE5800E6F770 /* LaunchScreen.storyboard */,
-				131329271F39DE5800E6F770 /* Info.plist */,
-				131329161F39DE5800E6F770 /* Supporting Files */,
+				1326350F1F39FEED009B1234 /* AppDelegate.h */,
+				132635101F39FEED009B1234 /* AppDelegate.m */,
+				132635121F39FEED009B1234 /* ViewController.h */,
+				132635131F39FEED009B1234 /* ViewController.m */,
+				132635151F39FEED009B1234 /* Main.storyboard */,
+				132635181F39FEED009B1234 /* Assets.xcassets */,
+				1326351A1F39FEED009B1234 /* LaunchScreen.storyboard */,
+				1326351D1F39FEED009B1234 /* Info.plist */,
+				1326350C1F39FEED009B1234 /* Supporting Files */,
 			);
 			path = YLPhoto;
 			sourceTree = "<group>";
 		};
-		131329161F39DE5800E6F770 /* Supporting Files */ = {
+		1326350C1F39FEED009B1234 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				131329171F39DE5800E6F770 /* main.m */,
+				1326350D1F39FEED009B1234 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1313292F1F39DE5800E6F770 /* YLPhotoTests */ = {
-			isa = PBXGroup;
-			children = (
-				131329301F39DE5800E6F770 /* YLPhotoTests.m */,
-				131329321F39DE5800E6F770 /* Info.plist */,
-			);
-			path = YLPhotoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		131329121F39DE5800E6F770 /* YLPhoto */ = {
+		132635081F39FEED009B1234 /* YLPhoto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 131329351F39DE5800E6F770 /* Build configuration list for PBXNativeTarget "YLPhoto" */;
+			buildConfigurationList = 132635201F39FEED009B1234 /* Build configuration list for PBXNativeTarget "YLPhoto" */;
 			buildPhases = (
-				1313290F1F39DE5800E6F770 /* Sources */,
-				131329101F39DE5800E6F770 /* Frameworks */,
-				131329111F39DE5800E6F770 /* Resources */,
+				132635051F39FEED009B1234 /* Sources */,
+				132635061F39FEED009B1234 /* Frameworks */,
+				132635071F39FEED009B1234 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -128,48 +96,25 @@
 			);
 			name = YLPhoto;
 			productName = YLPhoto;
-			productReference = 131329131F39DE5800E6F770 /* YLPhoto.app */;
+			productReference = 132635091F39FEED009B1234 /* YLPhoto.app */;
 			productType = "com.apple.product-type.application";
-		};
-		1313292B1F39DE5800E6F770 /* YLPhotoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 131329381F39DE5800E6F770 /* Build configuration list for PBXNativeTarget "YLPhotoTests" */;
-			buildPhases = (
-				131329281F39DE5800E6F770 /* Sources */,
-				131329291F39DE5800E6F770 /* Frameworks */,
-				1313292A1F39DE5800E6F770 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1313292E1F39DE5800E6F770 /* PBXTargetDependency */,
-			);
-			name = YLPhotoTests;
-			productName = YLPhotoTests;
-			productReference = 1313292C1F39DE5800E6F770 /* YLPhotoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1313290B1F39DE5800E6F770 /* Project object */ = {
+		132635011F39FEED009B1234 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Courser;
+				ORGANIZATIONNAME = "王忠迪";
 				TargetAttributes = {
-					131329121F39DE5800E6F770 = {
+					132635081F39FEED009B1234 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
-					};
-					1313292B1F39DE5800E6F770 = {
-						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 131329121F39DE5800E6F770;
 					};
 				};
 			};
-			buildConfigurationList = 1313290E1F39DE5800E6F770 /* Build configuration list for PBXProject "YLPhoto" */;
+			buildConfigurationList = 132635041F39FEED009B1234 /* Build configuration list for PBXProject "YLPhoto" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -177,79 +122,55 @@
 				en,
 				Base,
 			);
-			mainGroup = 1313290A1F39DE5800E6F770;
-			productRefGroup = 131329141F39DE5800E6F770 /* Products */;
+			mainGroup = 132635001F39FEED009B1234;
+			productRefGroup = 1326350A1F39FEED009B1234 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				131329121F39DE5800E6F770 /* YLPhoto */,
-				1313292B1F39DE5800E6F770 /* YLPhotoTests */,
+				132635081F39FEED009B1234 /* YLPhoto */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		131329111F39DE5800E6F770 /* Resources */ = {
+		132635071F39FEED009B1234 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				131329261F39DE5800E6F770 /* LaunchScreen.storyboard in Resources */,
-				131329231F39DE5800E6F770 /* Assets.xcassets in Resources */,
-				131329211F39DE5800E6F770 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1313292A1F39DE5800E6F770 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				1326351C1F39FEED009B1234 /* LaunchScreen.storyboard in Resources */,
+				132635191F39FEED009B1234 /* Assets.xcassets in Resources */,
+				132635171F39FEED009B1234 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1313290F1F39DE5800E6F770 /* Sources */ = {
+		132635051F39FEED009B1234 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1313291E1F39DE5800E6F770 /* ViewController.m in Sources */,
-				1313291B1F39DE5800E6F770 /* AppDelegate.m in Sources */,
-				131329181F39DE5800E6F770 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		131329281F39DE5800E6F770 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				131329311F39DE5800E6F770 /* YLPhotoTests.m in Sources */,
+				132635141F39FEED009B1234 /* ViewController.m in Sources */,
+				132635111F39FEED009B1234 /* AppDelegate.m in Sources */,
+				1326350E1F39FEED009B1234 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1313292E1F39DE5800E6F770 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 131329121F39DE5800E6F770 /* YLPhoto */;
-			targetProxy = 1313292D1F39DE5800E6F770 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		1313291F1F39DE5800E6F770 /* Main.storyboard */ = {
+		132635151F39FEED009B1234 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				131329201F39DE5800E6F770 /* Base */,
+				132635161F39FEED009B1234 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		131329241F39DE5800E6F770 /* LaunchScreen.storyboard */ = {
+		1326351A1F39FEED009B1234 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				131329251F39DE5800E6F770 /* Base */,
+				1326351B1F39FEED009B1234 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -257,7 +178,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		131329331F39DE5800E6F770 /* Debug */ = {
+		1326351E1F39FEED009B1234 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -306,7 +227,7 @@
 			};
 			name = Debug;
 		};
-		131329341F39DE5800E6F770 /* Release */ = {
+		1326351F1F39FEED009B1234 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -349,81 +270,49 @@
 			};
 			name = Release;
 		};
-		131329361F39DE5800E6F770 /* Debug */ = {
+		132635211F39FEED009B1234 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.YLPhoto;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		131329371F39DE5800E6F770 /* Release */ = {
+		132635221F39FEED009B1234 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.YLPhoto;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		131329391F39DE5800E6F770 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = YLPhotoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.YLPhotoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YLPhoto.app/YLPhoto";
-			};
-			name = Debug;
-		};
-		1313293A1F39DE5800E6F770 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = YLPhotoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.YLPhotoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YLPhoto.app/YLPhoto";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1313290E1F39DE5800E6F770 /* Build configuration list for PBXProject "YLPhoto" */ = {
+		132635041F39FEED009B1234 /* Build configuration list for PBXProject "YLPhoto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				131329331F39DE5800E6F770 /* Debug */,
-				131329341F39DE5800E6F770 /* Release */,
+				1326351E1F39FEED009B1234 /* Debug */,
+				1326351F1F39FEED009B1234 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		131329351F39DE5800E6F770 /* Build configuration list for PBXNativeTarget "YLPhoto" */ = {
+		132635201F39FEED009B1234 /* Build configuration list for PBXNativeTarget "YLPhoto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				131329361F39DE5800E6F770 /* Debug */,
-				131329371F39DE5800E6F770 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		131329381F39DE5800E6F770 /* Build configuration list for PBXNativeTarget "YLPhotoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				131329391F39DE5800E6F770 /* Debug */,
-				1313293A1F39DE5800E6F770 /* Release */,
+				132635211F39FEED009B1234 /* Debug */,
+				132635221F39FEED009B1234 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1313290B1F39DE5800E6F770 /* Project object */;
+	rootObject = 132635011F39FEED009B1234 /* Project object */;
 }
