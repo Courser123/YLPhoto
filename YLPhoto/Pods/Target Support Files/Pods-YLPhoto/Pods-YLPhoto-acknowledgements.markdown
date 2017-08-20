@@ -38,11 +38,11 @@ THE SOFTWARE.
 
 
 
-## YYKit
+## ZLPhotoBrowser
 
 The MIT License (MIT)
 
-Copyright (c) 2015 ibireme <ibireme@gmail.com>
+Copyright (c) 2015 longitachi <longitachi@163.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

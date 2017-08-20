@@ -3,20 +3,18 @@ PODS:
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
-  - YYKit (1.0.9):
-    - YYKit/no-arc (= 1.0.9)
-  - YYKit/no-arc (1.0.9)
+  - ZLPhotoBrowser (2.2.7)
 
 DEPENDENCIES:
   - GPUImage
   - SDWebImage
-  - YYKit
+  - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
-  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZLPhotoBrowser: f9868cf42c5cb52821bd139b46a4b1620a41ce6e
 
-PODFILE CHECKSUM: c1382f55e9a2023fafc0d983d6000031f890cb84
+PODFILE CHECKSUM: ac4c11b2325cb2385348c0f5a5d0324fa931e3e1
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.0.beta.2
