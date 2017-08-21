@@ -18,6 +18,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    // Override point for customization after application launch.
+    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
+        [UIApplication sharedApplication].statusBarHidden = YES;
+    }
+    else if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        // iOS7及以上
+        [self prefersStatusBarHidden];
+        //这个是更新状态栏的显示状态,只支持iOS7及以上,使用performSelector是为了不影响主线程的其他工作
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     MainViewController *main = [[MainViewController alloc] init];
@@ -29,6 +42,10 @@
     return YES;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;//隐藏为YES，显示为NO
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

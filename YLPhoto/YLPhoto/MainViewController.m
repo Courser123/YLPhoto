@@ -9,8 +9,10 @@
 #import "MainViewController.h"
 #import "LQPhotoPickerViewController.h"
 #import "LDSDKHeartFlyView.h"
+#import "YLCameraViewController.h"
+#import "CCCameraViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController () <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic,strong) LQPhotoPickerViewController *photoPickerVC;
 @property (nonatomic,strong) UIScrollView *mainScrollView;
@@ -18,6 +20,7 @@
 @property (nonatomic,strong) CADisplayLink *displayLink;
 @property (nonatomic,assign) double contentOffsetX;
 @property (nonatomic,strong) UIImageView *testImageView;
+@property (nonatomic,strong) UIButton *recordBtn;
 
 @end
 
@@ -28,7 +31,6 @@
     
     _contentOffsetX = 0;
     self.navigationController.navigationBar.hidden = YES;
-    self.view.backgroundColor = [UIColor blueColor];
     _mainScrollView = [[UIScrollView alloc] init];
 //    _mainScrollView.userInteractionEnabled = YES;
     _mainScrollView.showsVerticalScrollIndicator = NO;
@@ -36,7 +38,6 @@
     _mainnScrollViewImageView = [[UIImageView alloc] init];
     _mainScrollView.bounces = NO;
     
-    _mainScrollView.backgroundColor = [UIColor blueColor];
     _mainnScrollViewImageView.image = [UIImage imageNamed:@"WechatIMG58.jpeg"];
     _mainnScrollViewImageView.contentMode = UIViewContentModeScaleToFill;
     [_mainScrollView addSubview:_mainnScrollViewImageView];
@@ -51,6 +52,14 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheMainScrollView)];
     [_mainScrollView addGestureRecognizer:tap];
+    
+    _recordBtn = [[UIButton alloc] init];
+    [_recordBtn setBackgroundImage:[UIImage imageNamed:@"sy_70450177851.jpg"] forState:UIControlStateNormal];
+    _recordBtn.bounds = CGRectMake(0, 0, 60, 60);
+    _recordBtn.layer.cornerRadius = 30;
+    _recordBtn.layer.masksToBounds = YES;
+    [_recordBtn addTarget:self action:@selector(tapRecordBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_recordBtn];
     
 }
 
@@ -68,20 +77,27 @@
     _mainScrollView.contentSize = CGSizeMake(self.view.bounds.size.width + 66, self.view.bounds.size.height);
     _mainnScrollViewImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, _mainScrollView.contentSize.height);
     _testImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, 100);
+    _recordBtn.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height - 100);
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-}
-
 - (void)tapTheMainScrollView {
     LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 108, 200, 66, 66)];
     [self.mainScrollView addSubview:heartView];
     [heartView animateInView:self.mainScrollView];
+}
+
+- (void)tapRecordBtn {
+    
+//    YLCameraViewController *vc = [[YLCameraViewController alloc] init];
+    CCCameraViewController *vc = [[CCCameraViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -95,5 +111,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -- delegate
 
 @end

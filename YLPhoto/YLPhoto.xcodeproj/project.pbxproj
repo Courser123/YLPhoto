@@ -48,6 +48,21 @@
 		1329AF111F40985200FFAEAC /* libZLPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1329AF101F40985200FFAEAC /* libZLPhotoBrowser.a */; };
 		132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */; };
 		132D56661F447D5B00AB7E31 /* 1502889412_765176.png in Resources */ = {isa = PBXBuildFile; fileRef = 132D56651F447D5B00AB7E31 /* 1502889412_765176.png */; };
+		1333F3841F495422003425D3 /* sy_70450177851.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1333F3831F495422003425D3 /* sy_70450177851.jpg */; };
+		1333F3871F495499003425D3 /* YLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3861F495499003425D3 /* YLCameraViewController.m */; };
+		1333F38A1F49591C003425D3 /* MyAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3891F49591C003425D3 /* MyAnimator.m */; };
+		1333F4041F496A2D003425D3 /* CCBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3EC1F496A2D003425D3 /* CCBaseNavigationController.m */; };
+		1333F4051F496A2D003425D3 /* CCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3EE1F496A2D003425D3 /* CCBaseViewController.m */; };
+		1333F4061F496A2D003425D3 /* CCCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3F11F496A2D003425D3 /* CCCameraView.m */; };
+		1333F4071F496A2D003425D3 /* CCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3F31F496A2D003425D3 /* CCCameraViewController.m */; };
+		1333F4081F496A2D003425D3 /* CCglCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3F51F496A2D003425D3 /* CCglCameraViewController.m */; };
+		1333F4091F496A2D003425D3 /* CCImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3F71F496A2D003425D3 /* CCImagePreviewController.m */; };
+		1333F40A1F496A2D003425D3 /* CCMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3F91F496A2D003425D3 /* CCMotionManager.m */; };
+		1333F40B1F496A2D003425D3 /* CCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3FB1F496A2D003425D3 /* CCTools.m */; };
+		1333F40C1F496A2D003425D3 /* CCVideoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3FD1F496A2D003425D3 /* CCVideoPreview.m */; };
+		1333F40D1F496A2D003425D3 /* UILabel+CCFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3FF1F496A2D003425D3 /* UILabel+CCFont.m */; };
+		1333F40E1F496A2D003425D3 /* UIView+CCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F4011F496A2D003425D3 /* UIView+CCAdditions.m */; };
+		1333F40F1F496A2D003425D3 /* UIView+CCHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F4031F496A2D003425D3 /* UIView+CCHUD.m */; };
 		1335521B1F40361F009AF77A /* WechatIMG58.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1335521A1F40361F009AF77A /* WechatIMG58.jpeg */; };
 		F8A6842F67B0D93F61ABC949 /* libPods-YLPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A0E98723EA96D459D97EF1 /* libPods-YLPhoto.a */; };
 /* End PBXBuildFile section */
@@ -119,6 +134,36 @@
 		132D56621F4479C500AB7E31 /* LDSDKHeartFlyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDSDKHeartFlyView.h; sourceTree = "<group>"; };
 		132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDSDKHeartFlyView.m; sourceTree = "<group>"; };
 		132D56651F447D5B00AB7E31 /* 1502889412_765176.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1502889412_765176.png; sourceTree = "<group>"; };
+		1333F3831F495422003425D3 /* sy_70450177851.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sy_70450177851.jpg; sourceTree = "<group>"; };
+		1333F3851F495499003425D3 /* YLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLCameraViewController.h; sourceTree = "<group>"; };
+		1333F3861F495499003425D3 /* YLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLCameraViewController.m; sourceTree = "<group>"; };
+		1333F3881F49591C003425D3 /* MyAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimator.h; sourceTree = "<group>"; };
+		1333F3891F49591C003425D3 /* MyAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimator.m; sourceTree = "<group>"; };
+		1333F3EB1F496A2D003425D3 /* CCBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseNavigationController.h; sourceTree = "<group>"; };
+		1333F3EC1F496A2D003425D3 /* CCBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseNavigationController.m; sourceTree = "<group>"; };
+		1333F3ED1F496A2D003425D3 /* CCBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseViewController.h; sourceTree = "<group>"; };
+		1333F3EE1F496A2D003425D3 /* CCBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseViewController.m; sourceTree = "<group>"; };
+		1333F3EF1F496A2D003425D3 /* CCCamera.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCamera.pch; sourceTree = "<group>"; };
+		1333F3F01F496A2D003425D3 /* CCCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCameraView.h; sourceTree = "<group>"; };
+		1333F3F11F496A2D003425D3 /* CCCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCameraView.m; sourceTree = "<group>"; };
+		1333F3F21F496A2D003425D3 /* CCCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCameraViewController.h; sourceTree = "<group>"; };
+		1333F3F31F496A2D003425D3 /* CCCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCameraViewController.m; sourceTree = "<group>"; };
+		1333F3F41F496A2D003425D3 /* CCglCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCglCameraViewController.h; sourceTree = "<group>"; };
+		1333F3F51F496A2D003425D3 /* CCglCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCglCameraViewController.m; sourceTree = "<group>"; };
+		1333F3F61F496A2D003425D3 /* CCImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCImagePreviewController.h; sourceTree = "<group>"; };
+		1333F3F71F496A2D003425D3 /* CCImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCImagePreviewController.m; sourceTree = "<group>"; };
+		1333F3F81F496A2D003425D3 /* CCMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMotionManager.h; sourceTree = "<group>"; };
+		1333F3F91F496A2D003425D3 /* CCMotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMotionManager.m; sourceTree = "<group>"; };
+		1333F3FA1F496A2D003425D3 /* CCTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTools.h; sourceTree = "<group>"; };
+		1333F3FB1F496A2D003425D3 /* CCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTools.m; sourceTree = "<group>"; };
+		1333F3FC1F496A2D003425D3 /* CCVideoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVideoPreview.h; sourceTree = "<group>"; };
+		1333F3FD1F496A2D003425D3 /* CCVideoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCVideoPreview.m; sourceTree = "<group>"; };
+		1333F3FE1F496A2D003425D3 /* UILabel+CCFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CCFont.h"; sourceTree = "<group>"; };
+		1333F3FF1F496A2D003425D3 /* UILabel+CCFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CCFont.m"; sourceTree = "<group>"; };
+		1333F4001F496A2D003425D3 /* UIView+CCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CCAdditions.h"; sourceTree = "<group>"; };
+		1333F4011F496A2D003425D3 /* UIView+CCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CCAdditions.m"; sourceTree = "<group>"; };
+		1333F4021F496A2D003425D3 /* UIView+CCHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CCHUD.h"; sourceTree = "<group>"; };
+		1333F4031F496A2D003425D3 /* UIView+CCHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CCHUD.m"; sourceTree = "<group>"; };
 		1335521A1F40361F009AF77A /* WechatIMG58.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG58.jpeg; sourceTree = "<group>"; };
 		22A0E98723EA96D459D97EF1 /* libPods-YLPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YLPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2538F45AD0A8A677841A0079 /* Pods-YLPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YLPhoto/Pods-YLPhoto.debug.xcconfig"; sourceTree = "<group>"; };
@@ -283,12 +328,17 @@
 		1326350B1F39FEED009B1234 /* YLPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				1333F3EA1F496A06003425D3 /* Camera */,
 				133552191F4035F3009AF77A /* Sources */,
 				13132A8F1F3B2C2300E6F770 /* LQPhotoPicker */,
 				1326350F1F39FEED009B1234 /* AppDelegate.h */,
 				132635101F39FEED009B1234 /* AppDelegate.m */,
 				132635121F39FEED009B1234 /* MainViewController.h */,
 				132635131F39FEED009B1234 /* MainViewController.m */,
+				1333F3851F495499003425D3 /* YLCameraViewController.h */,
+				1333F3861F495499003425D3 /* YLCameraViewController.m */,
+				1333F3881F49591C003425D3 /* MyAnimator.h */,
+				1333F3891F49591C003425D3 /* MyAnimator.m */,
 				132D56621F4479C500AB7E31 /* LDSDKHeartFlyView.h */,
 				132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */,
 				132635151F39FEED009B1234 /* Main.storyboard */,
@@ -308,11 +358,44 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1333F3EA1F496A06003425D3 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				1333F3EB1F496A2D003425D3 /* CCBaseNavigationController.h */,
+				1333F3EC1F496A2D003425D3 /* CCBaseNavigationController.m */,
+				1333F3ED1F496A2D003425D3 /* CCBaseViewController.h */,
+				1333F3EE1F496A2D003425D3 /* CCBaseViewController.m */,
+				1333F3EF1F496A2D003425D3 /* CCCamera.pch */,
+				1333F3F01F496A2D003425D3 /* CCCameraView.h */,
+				1333F3F11F496A2D003425D3 /* CCCameraView.m */,
+				1333F3F21F496A2D003425D3 /* CCCameraViewController.h */,
+				1333F3F31F496A2D003425D3 /* CCCameraViewController.m */,
+				1333F3F41F496A2D003425D3 /* CCglCameraViewController.h */,
+				1333F3F51F496A2D003425D3 /* CCglCameraViewController.m */,
+				1333F3F61F496A2D003425D3 /* CCImagePreviewController.h */,
+				1333F3F71F496A2D003425D3 /* CCImagePreviewController.m */,
+				1333F3F81F496A2D003425D3 /* CCMotionManager.h */,
+				1333F3F91F496A2D003425D3 /* CCMotionManager.m */,
+				1333F3FA1F496A2D003425D3 /* CCTools.h */,
+				1333F3FB1F496A2D003425D3 /* CCTools.m */,
+				1333F3FC1F496A2D003425D3 /* CCVideoPreview.h */,
+				1333F3FD1F496A2D003425D3 /* CCVideoPreview.m */,
+				1333F3FE1F496A2D003425D3 /* UILabel+CCFont.h */,
+				1333F3FF1F496A2D003425D3 /* UILabel+CCFont.m */,
+				1333F4001F496A2D003425D3 /* UIView+CCAdditions.h */,
+				1333F4011F496A2D003425D3 /* UIView+CCAdditions.m */,
+				1333F4021F496A2D003425D3 /* UIView+CCHUD.h */,
+				1333F4031F496A2D003425D3 /* UIView+CCHUD.m */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		133552191F4035F3009AF77A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				132D56651F447D5B00AB7E31 /* 1502889412_765176.png */,
 				1335521A1F40361F009AF77A /* WechatIMG58.jpeg */,
+				1333F3831F495422003425D3 /* sy_70450177851.jpg */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -403,6 +486,7 @@
 				13132ACB1F3B2C2300E6F770 /* close@3x.png in Resources */,
 				13132AD11F3B2C2300E6F770 /* plus@3x.png in Resources */,
 				1326351C1F39FEED009B1234 /* LaunchScreen.storyboard in Resources */,
+				1333F3841F495422003425D3 /* sy_70450177851.jpg in Resources */,
 				132635191F39FEED009B1234 /* Assets.xcassets in Resources */,
 				13132ACE1F3B2C2300E6F770 /* ico_check_select@2x.png in Resources */,
 				132635171F39FEED009B1234 /* Main.storyboard in Resources */,
@@ -479,23 +563,37 @@
 				13132ADF1F3B2C2300E6F770 /* MImaLibTool.m in Sources */,
 				13132AE61F3B2C2300E6F770 /* LQPhotoViewCell.m in Sources */,
 				13132ADB1F3B2C2300E6F770 /* MGroupCell.m in Sources */,
+				1333F4061F496A2D003425D3 /* CCCameraView.m in Sources */,
 				13132AD51F3B2C2300E6F770 /* JJMainScrollView.m in Sources */,
 				13132AD71F3B2C2300E6F770 /* JJPhoto.m in Sources */,
 				13132ADA1F3B2C2300E6F770 /* LQImgPickerActionSheet.m in Sources */,
 				132635141F39FEED009B1234 /* MainViewController.m in Sources */,
+				1333F38A1F49591C003425D3 /* MyAnimator.m in Sources */,
 				13132AD41F3B2C2300E6F770 /* MHeadImaView.m in Sources */,
+				1333F40E1F496A2D003425D3 /* UIView+CCAdditions.m in Sources */,
 				13132AE51F3B2C2300E6F770 /* LQPhotoPickerViewController.m in Sources */,
 				132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */,
+				1333F4041F496A2D003425D3 /* CCBaseNavigationController.m in Sources */,
 				13132ADD1F3B2C2300E6F770 /* MImaCell.m in Sources */,
 				13132AD61F3B2C2300E6F770 /* JJOneScrollView.m in Sources */,
+				1333F4051F496A2D003425D3 /* CCBaseViewController.m in Sources */,
+				1333F40D1F496A2D003425D3 /* UILabel+CCFont.m in Sources */,
 				13132AE31F3B2C2300E6F770 /* SDLoopProgressView.m in Sources */,
+				1333F40A1F496A2D003425D3 /* CCMotionManager.m in Sources */,
 				13132AE01F3B2C2300E6F770 /* MShowAllGroup.m in Sources */,
 				132635111F39FEED009B1234 /* AppDelegate.m in Sources */,
 				13132AE21F3B2C2300E6F770 /* SDBaseProgressView.m in Sources */,
+				1333F4071F496A2D003425D3 /* CCCameraViewController.m in Sources */,
+				1333F4091F496A2D003425D3 /* CCImagePreviewController.m in Sources */,
 				1326350E1F39FEED009B1234 /* main.m in Sources */,
 				13132AE11F3B2C2300E6F770 /* MShowGroupAllSet.m in Sources */,
 				13132AD81F3B2C2300E6F770 /* JJPhotoManeger.m in Sources */,
+				1333F40B1F496A2D003425D3 /* CCTools.m in Sources */,
 				13132AD21F3B2C2300E6F770 /* MFlowLayOut.m in Sources */,
+				1333F4081F496A2D003425D3 /* CCglCameraViewController.m in Sources */,
+				1333F40F1F496A2D003425D3 /* UIView+CCHUD.m in Sources */,
+				1333F3871F495499003425D3 /* YLCameraViewController.m in Sources */,
+				1333F40C1F496A2D003425D3 /* CCVideoPreview.m in Sources */,
 				13132AE41F3B2C2300E6F770 /* SDDemoItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +720,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				GCC_PREFIX_HEADER = /Users/wangzhongdi/Desktop/YLPhoto/YLPhoto/YLPhoto/Camera/CCCamera.pch;
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -645,6 +744,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				GCC_PREFIX_HEADER = /Users/wangzhongdi/Desktop/YLPhoto/YLPhoto/YLPhoto/Camera/CCCamera.pch;
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -711,6 +811,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				GCC_PREFIX_HEADER = /Users/wangzhongdi/Desktop/YLPhoto/YLPhoto/YLPhoto/Camera/CCCamera.pch;
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
