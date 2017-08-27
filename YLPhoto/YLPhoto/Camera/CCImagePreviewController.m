@@ -13,6 +13,7 @@
     UIImage *_image;
     CGRect   _frame;
 }
+@property (nonatomic,weak) UIButton *saveButton;
 @end
 
 @implementation CCImagePreviewController
@@ -68,7 +69,8 @@
     
     // 保存图片按钮
     UIButton *saveButton = [[UIButton alloc] init];
-//    [saveButton setBackgroundImage:[UIImage imageNamed:@"end_save_gif"] forState:UIControlStateNormal];
+    self.saveButton = saveButton;
+    self.saveButton.userInteractionEnabled = YES;
     [saveButton setImage:[UIImage imageNamed:@"end_save_gif"] forState:UIControlStateNormal];
     [saveButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     saveButton.backgroundColor = [UIColor whiteColor];
@@ -121,7 +123,14 @@
                                           otherButtonTitles:nil];
  
     [alert show];
- 
+    
+    // download_confirm
+    [UIView animateWithDuration:0.75 animations:^{
+        [self.saveButton setImage:[UIImage imageNamed:@"download_confirm"] forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
+        self.saveButton.userInteractionEnabled = NO;
+    }];
+    
 }
 
 /*
