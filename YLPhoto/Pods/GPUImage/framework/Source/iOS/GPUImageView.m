@@ -77,6 +77,11 @@
 	return self;
 }
 
+- (void)setCrRotation:(GPUImageRotationMode)crRotation {
+    _crRotation = crRotation;
+    [self setInputRotation:crRotation atIndex:0];
+}
+
 - (void)commonInit;
 {
     // Set scaling to account for Retina display	

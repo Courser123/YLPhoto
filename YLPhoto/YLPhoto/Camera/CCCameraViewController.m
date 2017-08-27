@@ -18,6 +18,10 @@
 #import "CCMotionManager.h"
 #import "UIView+CCHUD.h"
 
+#import <GPUImage.h>
+#import "GPUImageBeautifyFilter.h"
+#import "UIImage+fixOrientation.h"
+
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
 @interface CCCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,CCCameraViewDelegate>
@@ -52,6 +56,12 @@
 @property(nonatomic, strong) AVCaptureDevice *inactiveCamera;   // 不活跃的设备(这里指前摄像头或后摄像头，不包括外接输入设备)
 @property(nonatomic, assign) AVCaptureVideoOrientation	referenceOrientation; // 视频播放方向
 
+@property (nonatomic , strong) GPUImageFilterGroup *filter;
+//@property (nonatomic , strong) GPUImageFilter *filter;
+@property (nonatomic , strong) GPUImageVideoCamera *mGPUVideoCamera;
+@property (nonatomic , weak)   GPUImageView *mView;
+@property (nonatomic , strong) GPUImagePicture *stillImageSource;
+
 @end
 
 @implementation CCCameraViewController
@@ -74,7 +84,40 @@
     NSError *error;
     [self setupSession:&error];
     if (!error) {
-        [self.cameraView.previewView setCaptureSessionsion:_captureSession];
+//        [self.cameraView.previewView setCaptureSessionsion:_captureSession];
+
+//        GPUImageFilter *filter;
+        GPUImageFilterGroup *filter;
+        
+//        filter = [[GPUImageFilter alloc] init];
+        //    filter = [[GPUImageSepiaFilter alloc] init]; // 褐色(怀旧)
+//            filter = [[GPUImageAverageLuminanceThresholdFilter alloc] init]; // 图像黑白,类似漫画效果
+//            filter = [[GPUImageSobelEdgeDetectionFilter alloc] init]; //Sobel边缘检测算法(白边，黑内容，有点漫画的反色效果)
+//            filter = [[GPUImageCannyEdgeDetectionFilter alloc] init]; // Canny边缘检测算法（比上更强烈的黑白对比度）
+//            filter = [[GPUImageSketchFilter alloc] init]; //素描
+        
+//            filter = [[GPUImageToonFilter alloc] init]; //卡通效果（黑色粗线描边）
+//            filter = [[GPUImageSmoothToonFilter alloc] init]; //相比上面的效果更细腻，上面是粗旷的画风
+        
+        //    GPUImageBulgeDistortionFilter *filter = [[GPUImageBulgeDistortionFilter alloc] init];
+        //    filter.radius = 0.75; //凸起失真，鱼眼效果
+        //    filter = [[GPUImagePinchDistortionFilter alloc] init]; //收缩失真，凹面镜
+        //    filter = [[GPUImageStretchDistortionFilter alloc] init]; //伸展失真，哈哈镜
+//            filter = [[GPUImageGlassSphereFilter alloc] init]; //水晶球效果
+//        filter = [[GPUImageEmbossFilter alloc] init]; //浮雕效果，带有点3d的感觉
+        filter = [[GPUImageBeautifyFilter alloc] init]; // 美颜效果
+    
+        GPUImageView *mView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
+        self.mView = mView;
+        mView.crRotation = kGPUImageFlipHorizonal;
+        
+        [self.mGPUVideoCamera addTarget:filter];
+        [filter addTarget:mView];
+        
+        [self.view addSubview:mView];
+        [self.view sendSubviewToBack:mView];
+        self.filter = filter;
+        
         [self startCaptureSession];
     }
     else{
@@ -133,7 +176,11 @@
 // 配置会话
 - (void)setupSession:(NSError **)error
 {
-    _captureSession = [[AVCaptureSession alloc]init];
+    self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionFront];
+    self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+//    _captureSession = [[AVCaptureSession alloc]init];
+    _captureSession = self.mGPUVideoCamera.captureSession;
     [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
     
     [self setupSessionInputs:error];
@@ -216,6 +263,9 @@
 
 #pragma mark - 拍摄照片
 -(void)takePictureImage{
+    
+    self.mView.hidden = YES;
+    
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
     if (connection.isVideoOrientationSupported) {
         connection.videoOrientation = [self currentVideoOrientation];
@@ -225,12 +275,43 @@
             [self showError:error];
             return ;
         }
+        UIImageOrientation imgOrientation;
+        if (self.mView.crRotation == kGPUImageFlipHorizonal) {
+            imgOrientation = UIImageOrientationLeftMirrored;
+        }else {
+            imgOrientation = UIImageOrientationRight;
+        }
+        
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
         UIImage *image = [[UIImage alloc]initWithData:imageData];
-        CCImagePreviewController *vc = [[CCImagePreviewController alloc]initWithImage:image frame:self.cameraView.previewView.frame];
-//        [self.navigationController pushViewController:vc animated:YES];
+        
+        self.stillImageSource = [[GPUImagePicture alloc] initWithImage:image];
+        [self.filter forceProcessingAtSize:image.size];
+        [self.filter useNextFrameForImageCapture];
+        [self.stillImageSource addTarget:self.filter];
+        [self.stillImageSource processImage];
+        UIImage *currentFilteredVideoFrame = [self.filter imageFromCurrentFramebuffer];
+        
+//        __weak typeof(self) weakSelf = self;
+//        __block UIImage *currentFilteredVideoFrame;
+//        [self.filter setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time){
+//            
+////            [output useNextFrameForImageCapture];
+////            UIImage *image = [output imageFromCurrentFramebuffer];
+//            weakSelf.stillImageSource = [[GPUImagePicture alloc] initWithImage:image];
+//            [weakSelf.stillImageSource addTarget:weakSelf.filter];
+//            [output useNextFrameForImageCapture];
+//            [weakSelf.stillImageSource processImage];
+//            currentFilteredVideoFrame = [output imageFromCurrentFramebuffer];
+//        }];
+        
+        UIImage *finalImage = [UIImage imageWithCGImage:[currentFilteredVideoFrame CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
+        finalImage = [finalImage fixOrientation];
+        
+        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:finalImage frame:self.cameraView.previewView.frame];
+        
         [self presentViewController:vc animated:NO completion:^{
-            
+            self.mView.hidden = NO;
         }];
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
@@ -525,8 +606,18 @@
 #pragma mark - 转换前后摄像头
 - (void)swicthCameraAction:(CCCameraView *)cameraView succ:(void (^)(void))succ fail:(void (^)(NSError *))fail
 {
-    id error = [self switchCameras];
-    error?!fail?:fail(error):!succ?:succ();
+    [self.mGPUVideoCamera rotateCamera];
+    if (self.mView.crRotation == kGPUImageFlipHorizonal) {
+        self.mView.crRotation = kGPUImageNoRotation;
+    }else {
+        self.mView.crRotation = kGPUImageFlipHorizonal;
+    }
+//    [_captureSession beginConfiguration];
+//    _videoConnection = [_videoOutput connectionWithMediaType:AVMediaTypeVideo];
+//    _videoConnection.videoOrientation = self.referenceOrientation;
+//    [_captureSession commitConfiguration];
+//    id error = [self switchCameras];
+//    error?!fail?:fail(error):!succ?:succ();
 }
 
 - (BOOL)canSwitchCameras

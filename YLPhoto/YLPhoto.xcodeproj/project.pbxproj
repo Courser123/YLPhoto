@@ -46,6 +46,8 @@
 		1329AF0D1F40980C00FFAEAC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1329AF0C1F40980C00FFAEAC /* libGPUImage.a */; };
 		1329AF0F1F40984E00FFAEAC /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1329AF0E1F40984E00FFAEAC /* libSDWebImage.a */; };
 		1329AF111F40985200FFAEAC /* libZLPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1329AF101F40985200FFAEAC /* libZLPhotoBrowser.a */; };
+		132D37831F52DAA600601246 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D37821F52DAA600601246 /* GPUImageBeautifyFilter.m */; };
+		132D37861F5301F100601246 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D37851F5301F100601246 /* UIImage+fixOrientation.m */; };
 		132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */; };
 		132D56661F447D5B00AB7E31 /* 1502889412_765176.png in Resources */ = {isa = PBXBuildFile; fileRef = 132D56651F447D5B00AB7E31 /* 1502889412_765176.png */; };
 		1333F3841F495422003425D3 /* sy_70450177851.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1333F3831F495422003425D3 /* sy_70450177851.jpg */; };
@@ -131,6 +133,10 @@
 		1329AF0C1F40980C00FFAEAC /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "../../../Library/Developer/Xcode/DerivedData/YLPhoto-hjoojnwurikmzigroclkqoetzudu/Build/Products/Debug-iphonesimulator/GPUImage/libGPUImage.a"; sourceTree = "<group>"; };
 		1329AF0E1F40984E00FFAEAC /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "Pods/../build/Release-iphoneos/SDWebImage/libSDWebImage.a"; sourceTree = "<group>"; };
 		1329AF101F40985200FFAEAC /* libZLPhotoBrowser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZLPhotoBrowser.a; path = "Pods/../build/Release-iphoneos/ZLPhotoBrowser/libZLPhotoBrowser.a"; sourceTree = "<group>"; };
+		132D37811F52DAA600601246 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		132D37821F52DAA600601246 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		132D37841F5301F100601246 /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
+		132D37851F5301F100601246 /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		132D56621F4479C500AB7E31 /* LDSDKHeartFlyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDSDKHeartFlyView.h; sourceTree = "<group>"; };
 		132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDSDKHeartFlyView.m; sourceTree = "<group>"; };
 		132D56651F447D5B00AB7E31 /* 1502889412_765176.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1502889412_765176.png; sourceTree = "<group>"; };
@@ -328,6 +334,7 @@
 		1326350B1F39FEED009B1234 /* YLPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				132D36CF1F529E7500601246 /* GPUImage */,
 				1333F3EA1F496A06003425D3 /* Camera */,
 				133552191F4035F3009AF77A /* Sources */,
 				13132A8F1F3B2C2300E6F770 /* LQPhotoPicker */,
@@ -356,6 +363,17 @@
 				1326350D1F39FEED009B1234 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		132D36CF1F529E7500601246 /* GPUImage */ = {
+			isa = PBXGroup;
+			children = (
+				132D37811F52DAA600601246 /* GPUImageBeautifyFilter.h */,
+				132D37821F52DAA600601246 /* GPUImageBeautifyFilter.m */,
+				132D37841F5301F100601246 /* UIImage+fixOrientation.h */,
+				132D37851F5301F100601246 /* UIImage+fixOrientation.m */,
+			);
+			path = GPUImage;
 			sourceTree = "<group>";
 		};
 		1333F3EA1F496A06003425D3 /* Camera */ = {
@@ -571,12 +589,14 @@
 				1333F38A1F49591C003425D3 /* MyAnimator.m in Sources */,
 				13132AD41F3B2C2300E6F770 /* MHeadImaView.m in Sources */,
 				1333F40E1F496A2D003425D3 /* UIView+CCAdditions.m in Sources */,
+				132D37861F5301F100601246 /* UIImage+fixOrientation.m in Sources */,
 				13132AE51F3B2C2300E6F770 /* LQPhotoPickerViewController.m in Sources */,
 				132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */,
 				1333F4041F496A2D003425D3 /* CCBaseNavigationController.m in Sources */,
 				13132ADD1F3B2C2300E6F770 /* MImaCell.m in Sources */,
 				13132AD61F3B2C2300E6F770 /* JJOneScrollView.m in Sources */,
 				1333F4051F496A2D003425D3 /* CCBaseViewController.m in Sources */,
+				132D37831F52DAA600601246 /* GPUImageBeautifyFilter.m in Sources */,
 				1333F40D1F496A2D003425D3 /* UILabel+CCFont.m in Sources */,
 				13132AE31F3B2C2300E6F770 /* SDLoopProgressView.m in Sources */,
 				1333F40A1F496A2D003425D3 /* CCMotionManager.m in Sources */,
@@ -728,6 +748,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos/SDWebImage",
 					"$(PROJECT_DIR)/build/Release-iphoneos/ZLPhotoBrowser",
+					"$(PROJECT_DIR)/YLPhoto/GPUImage",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -752,6 +773,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos/SDWebImage",
 					"$(PROJECT_DIR)/build/Release-iphoneos/ZLPhotoBrowser",
+					"$(PROJECT_DIR)/YLPhoto/GPUImage",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -819,6 +841,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos/SDWebImage",
 					"$(PROJECT_DIR)/build/Release-iphoneos/ZLPhotoBrowser",
+					"$(PROJECT_DIR)/YLPhoto/GPUImage",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
 				PRODUCT_NAME = "$(TARGET_NAME)";

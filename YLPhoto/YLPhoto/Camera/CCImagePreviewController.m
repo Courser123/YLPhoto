@@ -7,6 +7,7 @@
 //
 
 #import "CCImagePreviewController.h"
+#import "UIImage+fixOrientation.h"
 
 @interface CCImagePreviewController ()
 {
@@ -49,6 +50,7 @@
 }
 
 - (void)setupUI {
+    _image = [_image fixOrientation];
     UIImageView *imageView = [[UIImageView alloc]initWithImage:_image];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
@@ -121,6 +123,54 @@
     } completion:^(BOOL finished) {
         self.saveButton.userInteractionEnabled = NO;
     }];
+    
+}
+
+- (UIImage *)fitSmallImage:(UIImage *)image {
+    
+    if (nil == image) {
+        
+        return nil;
+        
+    }
+    
+    if (image.size.width < 1000.0f || image.size.height < 1000) {
+        
+        return image;
+        
+    }
+    
+    
+    
+    //    CGSize size = CGSizeMake(1000.0f, 1334.0f);3264 2448
+    
+    NSInteger ks = 2;
+    
+    if (image.size.width>image.size.height) {
+        
+        ks = (image.size.width)/1000;
+        
+    }else{
+        
+        ks = (image.size.height)/1000;
+        
+    }
+    
+    CGSize size = CGSizeMake(image.size.width/ks, image.size.height/ks);
+    
+    
+    
+    UIGraphicsBeginImageContext(size);
+    
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    
+    [image drawInRect:rect];
+    
+    UIImage *newing = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newing;
     
 }
 

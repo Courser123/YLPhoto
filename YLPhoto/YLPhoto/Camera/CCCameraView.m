@@ -122,7 +122,7 @@
     [typeButton addTarget:self action:@selector(changeType:) forControlEvents:UIControlEventTouchUpInside];
     [typeButton sizeToFit];
     typeButton.center = CGPointMake(_bottomView.width-60, _bottomView.height/2);
-    [self.bottomView addSubview:typeButton];
+//    [self.bottomView addSubview:typeButton];
     
     // 关闭页面
     UIButton *dismissBtn = [[UIButton alloc] init];

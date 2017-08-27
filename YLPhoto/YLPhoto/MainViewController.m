@@ -11,6 +11,7 @@
 #import "LDSDKHeartFlyView.h"
 #import "YLCameraViewController.h"
 #import "CCCameraViewController.h"
+#import <GPUImage.h>
 
 @interface MainViewController () <UIViewControllerTransitioningDelegate>
 
@@ -46,9 +47,9 @@
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(moveTheScrollView)];
     [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     
-    _testImageView = [[UIImageView alloc] init];
-    _testImageView.image = [UIImage imageNamed:@"1502889412_765176.png"];
-    [_mainScrollView addSubview:_testImageView];
+//    _testImageView = [[UIImageView alloc] init];
+//    _testImageView.image = [UIImage imageNamed:@"1502889412_765176.png"];
+//    [_mainScrollView addSubview:_testImageView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheMainScrollView)];
     [_mainScrollView addGestureRecognizer:tap];
@@ -76,7 +77,7 @@
     _mainScrollView.frame = self.view.bounds;
     _mainScrollView.contentSize = CGSizeMake(self.view.bounds.size.width + 66, self.view.bounds.size.height);
     _mainnScrollViewImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, _mainScrollView.contentSize.height);
-    _testImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, 100);
+//    _testImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, 100);
     _recordBtn.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height - 100);
 }
 
@@ -88,6 +89,21 @@
     LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 108, 200, 66, 66)];
     [self.mainScrollView addSubview:heartView];
     [heartView animateInView:self.mainScrollView];
+    
+//    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+//    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+//    
+//    GPUImageFilter *customFilter = [[GPUImageEmbossFilter alloc] init]; //浮雕效果，带有点3d的感觉
+//    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)];
+//    
+//    // Add the view somewhere so it's visible
+//    
+//    [videoCamera addTarget:customFilter];
+//    [customFilter addTarget:filteredVideoView];
+//    
+//    [self.view addSubview:filteredVideoView];
+//    
+//    [videoCamera startCameraCapture];
 }
 
 - (void)tapRecordBtn {
