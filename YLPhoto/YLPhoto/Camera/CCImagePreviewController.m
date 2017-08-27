@@ -44,16 +44,84 @@
 - (void)viewDidLoad {
     [self hideStatusBar];
     [super viewDidLoad];
+    [self setupUI];
+}
+
+- (void)setupUI {
     UIImageView *imageView = [[UIImageView alloc]initWithImage:_image];
+    imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.frame = CGRectMake(0, 0, _frame.size.width, _frame.size.height);
     [self.view addSubview:imageView];
+    
+    // 透明遮罩
+    UIView *coverView = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:coverView];
+    
+    // 返回按钮
+    UIButton *backButton = [[UIButton alloc] init];
+    [backButton setBackgroundImage:[UIImage imageNamed:@"global_close_shadow"] forState:UIControlStateNormal];
+    backButton.frame = CGRectMake(20, coverView.height - 100, 40, 40);
+    [backButton addTarget:self action:@selector(dismissSelf) forControlEvents:UIControlEventTouchUpInside];
+    [coverView addSubview:backButton];
+    
+    // 保存图片按钮
+    UIButton *saveButton = [[UIButton alloc] init];
+//    [saveButton setBackgroundImage:[UIImage imageNamed:@"end_save_gif"] forState:UIControlStateNormal];
+    [saveButton setImage:[UIImage imageNamed:@"end_save_gif"] forState:UIControlStateNormal];
+    [saveButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    saveButton.backgroundColor = [UIColor whiteColor];
+    saveButton.center = CGPointMake(coverView.width * 0.5 , coverView.height - 80);
+    saveButton.bounds = CGRectMake(0, 0, 60, 60);
+    saveButton.layer.cornerRadius = 30;
+    saveButton.layer.masksToBounds = YES;
+    [saveButton addTarget:self action:@selector(saveImageToPhotos) forControlEvents:UIControlEventTouchUpInside];
+    [coverView addSubview:saveButton];
+    
+    // 添加滤镜按钮
+    UIButton *filterButton = [[UIButton alloc] init];
+    [filterButton setBackgroundImage:[UIImage imageNamed:@"filter_icon_filter"] forState:UIControlStateNormal];
+    filterButton.frame = CGRectMake(coverView.width - 70, coverView.height - 100, 40, 40);
+    [coverView addSubview:filterButton];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dismissSelf {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void)saveImageToPhotos {
+    UIImageWriteToSavedPhotosAlbum(_image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+}
+
+// 指定回调方法
+
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+
+{
+
+    NSString *msg = nil ;
+
+    if(error != NULL){
+        msg = @"保存图片失败" ;
+    }else{
+        msg = @"保存图片成功" ;
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存图片结果提示"
+                                                    message:msg
+                                                   delegate:self
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+ 
+    [alert show];
+ 
 }
 
 /*

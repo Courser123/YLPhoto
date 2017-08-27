@@ -229,7 +229,7 @@
         UIImage *image = [[UIImage alloc]initWithData:imageData];
         CCImagePreviewController *vc = [[CCImagePreviewController alloc]initWithImage:image frame:self.cameraView.previewView.frame];
 //        [self.navigationController pushViewController:vc animated:YES];
-        [self presentViewController:vc animated:YES completion:^{
+        [self presentViewController:vc animated:NO completion:^{
             
         }];
     };
