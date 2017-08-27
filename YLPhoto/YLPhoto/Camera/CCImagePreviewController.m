@@ -108,25 +108,16 @@
 - (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
 
 {
-
-    NSString *msg = nil ;
-
-    if(error != NULL){
-        msg = @"保存图片失败" ;
-    }else{
-        msg = @"保存图片成功" ;
-    }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存图片结果提示"
-                                                    message:msg
-                                                   delegate:self
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil];
- 
-    [alert show];
+    UIImage *showImage;
     
-    // download_confirm
+    if(error != NULL){
+        showImage = [UIImage imageNamed:@"alert_ico_page_02"];
+    }else{
+        showImage = [UIImage imageNamed:@"download_confirm"];
+    }
+
     [UIView animateWithDuration:0.75 animations:^{
-        [self.saveButton setImage:[UIImage imageNamed:@"download_confirm"] forState:UIControlStateNormal];
+        [self.saveButton setImage:showImage forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         self.saveButton.userInteractionEnabled = NO;
     }];
