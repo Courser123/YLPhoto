@@ -47,7 +47,7 @@
 
 -(UIView *)bottomView{
     if (_bottomView == nil) {
-        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, self.height-100, self.width, 100)];
+        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, self.height-150, self.width, 150)];
 //        _bottomView.backgroundColor = [UIColor blackColor];
     }
     return _bottomView;
@@ -94,11 +94,14 @@
     
     // 拍照
     UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [photoButton setTitle:@"拍照" forState:UIControlStateNormal];
-    [photoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [photoButton setTitle:@"拍照" forState:UIControlStateNormal];
+    [photoButton setBackgroundImage:[UIImage imageNamed:@"sticker_select_fake"] forState:UIControlStateNormal];
+//    [photoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [photoButton addTarget:self action:@selector(takePicture:) forControlEvents:UIControlEventTouchUpInside];
-    [photoButton sizeToFit];
-    photoButton.center = CGPointMake(_bottomView.centerX-20, _bottomView.height/2);
+//    [photoButton sizeToFit];
+//    photoButton.center = CGPointMake(_bottomView.centerX-20, _bottomView.height/2);
+    photoButton.center = CGPointMake(self.bottomView.width * 0.5, self.bottomView.height * 0.5 - 20);
+    photoButton.bounds = CGRectMake(0, 0, 80, 80);
     [self.bottomView addSubview:photoButton];
     _photoBtn = photoButton;
     
@@ -109,7 +112,7 @@
     [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     [cancelButton sizeToFit];
     cancelButton.center = CGPointMake(40, _bottomView.height/2);
-    [self.bottomView addSubview:cancelButton];
+//    [self.bottomView addSubview:cancelButton];
     
     // 照片类型
     UIButton *typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
