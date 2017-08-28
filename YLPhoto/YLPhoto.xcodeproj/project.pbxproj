@@ -50,6 +50,7 @@
 		132D37861F5301F100601246 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D37851F5301F100601246 /* UIImage+fixOrientation.m */; };
 		132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */; };
 		132D56661F447D5B00AB7E31 /* 1502889412_765176.png in Resources */ = {isa = PBXBuildFile; fileRef = 132D56651F447D5B00AB7E31 /* 1502889412_765176.png */; };
+		13315B8B1F545FF600B82950 /* WechatIMG70.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 13315B8A1F545FF600B82950 /* WechatIMG70.jpeg */; };
 		1333F3841F495422003425D3 /* sy_70450177851.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1333F3831F495422003425D3 /* sy_70450177851.jpg */; };
 		1333F3871F495499003425D3 /* YLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3861F495499003425D3 /* YLCameraViewController.m */; };
 		1333F38A1F49591C003425D3 /* MyAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F3891F49591C003425D3 /* MyAnimator.m */; };
@@ -140,6 +141,7 @@
 		132D56621F4479C500AB7E31 /* LDSDKHeartFlyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDSDKHeartFlyView.h; sourceTree = "<group>"; };
 		132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDSDKHeartFlyView.m; sourceTree = "<group>"; };
 		132D56651F447D5B00AB7E31 /* 1502889412_765176.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1502889412_765176.png; sourceTree = "<group>"; };
+		13315B8A1F545FF600B82950 /* WechatIMG70.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG70.jpeg; sourceTree = "<group>"; };
 		1333F3831F495422003425D3 /* sy_70450177851.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sy_70450177851.jpg; sourceTree = "<group>"; };
 		1333F3851F495499003425D3 /* YLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLCameraViewController.h; sourceTree = "<group>"; };
 		1333F3861F495499003425D3 /* YLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLCameraViewController.m; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		133552191F4035F3009AF77A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				13315B8A1F545FF600B82950 /* WechatIMG70.jpeg */,
 				132D56651F447D5B00AB7E31 /* 1502889412_765176.png */,
 				1335521A1F40361F009AF77A /* WechatIMG58.jpeg */,
 				1333F3831F495422003425D3 /* sy_70450177851.jpg */,
@@ -516,6 +519,7 @@
 				1335521B1F40361F009AF77A /* WechatIMG58.jpeg in Resources */,
 				13132ACC1F3B2C2300E6F770 /* ico_check_nomal@2x.png in Resources */,
 				13132AD91F3B2C2300E6F770 /* none.png in Resources */,
+				13315B8B1F545FF600B82950 /* WechatIMG70.jpeg in Resources */,
 				13132ADC1F3B2C2300E6F770 /* MGroupCell.xib in Resources */,
 				13132AE71F3B2C2300E6F770 /* LQPhotoViewCell.xib in Resources */,
 				13132ADE1F3B2C2300E6F770 /* MImaCell.xib in Resources */,

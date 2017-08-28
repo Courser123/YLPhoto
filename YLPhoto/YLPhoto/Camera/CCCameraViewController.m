@@ -138,7 +138,6 @@
     
         GPUImageView *mView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
         self.mView = mView;
-        mView.crRotation = kGPUImageFlipHorizonal;
         
         [self.mGPUVideoCamera addTarget:filter];
         [filter addTarget:mView];
@@ -207,6 +206,8 @@
 {
     self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionFront];
     self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+//    self.mGPUVideoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
     
 //    _captureSession = [[AVCaptureSession alloc]init];
     _captureSession = self.mGPUVideoCamera.captureSession;
@@ -292,10 +293,13 @@
 
 #pragma mark - 拍摄照片
 -(void)takePictureImage{
-    
-//    self.mView.hidden = YES;
-    
+    self.mView.hidden = YES;
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
+    if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
+        connection.videoMirrored = YES;
+    }else {
+        connection.videoMirrored = NO;
+    }
     if (connection.isVideoOrientationSupported) {
         connection.videoOrientation = [self currentVideoOrientation];
     }
@@ -305,7 +309,7 @@
             return ;
         }
         UIImageOrientation imgOrientation;
-        if (self.mView.crRotation == kGPUImageFlipHorizonal) {
+        if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera == YES) {
             imgOrientation = UIImageOrientationLeftMirrored;
         }else {
             imgOrientation = UIImageOrientationRight;
@@ -314,14 +318,12 @@
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
         UIImage *image = [[UIImage alloc]initWithData:imageData];
         UIImage *currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
-//        UIImage *finalImage = [UIImage imageWithCGImage:[currentFilteredVideoFrame CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
-        UIImage *finalImage = [currentFilteredVideoFrame fixOrientation];
-//        finalImage = [finalImage fixOrientation];
+        currentFilteredVideoFrame = [UIImage imageWithCGImage:[currentFilteredVideoFrame CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
         
-        
-        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:finalImage frame:self.cameraView.previewView.frame];
+        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame];
         
         [self presentViewController:vc animated:NO completion:^{
+//            self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
             self.mView.hidden = NO;
         }];
     };
@@ -618,10 +620,10 @@
 - (void)swicthCameraAction:(CCCameraView *)cameraView succ:(void (^)(void))succ fail:(void (^)(NSError *))fail
 {
     [self.mGPUVideoCamera rotateCamera];
-    if (self.mView.crRotation == kGPUImageFlipHorizonal) {
-        self.mView.crRotation = kGPUImageNoRotation;
+    if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
+        self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = NO;
     }else {
-        self.mView.crRotation = kGPUImageFlipHorizonal;
+        self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
     }
 //    [_captureSession beginConfiguration];
 //    _videoConnection = [_videoOutput connectionWithMediaType:AVMediaTypeVideo];
