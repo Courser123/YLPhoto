@@ -15,6 +15,8 @@
 
 /// 转换摄像头
 -(void)swicthCameraAction:(CCCameraView *)cameraView succ:(void(^)(void))succ fail:(void(^)(NSError *error))fail;
+/// 打开相册
+- (void)openPhotos:(CCCameraView *)cameraView succ:(void(^)(void))succ fail:(void(^)(NSError *error))fail;
 /// 自动聚焦曝光
 -(void)autoFocusAndExposureAction:(CCCameraView *)cameraView succ:(void(^)(void))succ fail:(void(^)(NSError *error))fail;
 /// 补光按钮

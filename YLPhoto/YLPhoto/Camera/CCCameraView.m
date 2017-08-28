@@ -142,6 +142,15 @@
     switchCameraButton.frame = CGRectMake(self.width - 150, 20, 30, 30);
     [self.topView addSubview:switchCameraButton];
     
+    // 相册选择
+    UIButton *photosButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [photosButton setBackgroundImage:[UIImage imageNamed:@"WechatIMG58.jpeg"] forState:UIControlStateNormal];
+    [photosButton addTarget:self action:@selector(openPhotos:) forControlEvents:UIControlEventTouchUpInside];
+    photosButton.frame = CGRectMake(self.width - 100 , 20, 30, 30);
+    photosButton.layer.cornerRadius = 15;
+    photosButton.layer.masksToBounds = YES;
+    [self.topView addSubview:photosButton];
+    
     // 补光
     UIButton *lightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [lightButton setTitle:@"补光" forState:UIControlStateNormal];
@@ -265,6 +274,15 @@
 -(void)switchCameraClick:(UIButton *)btn{
     if ([_delegate respondsToSelector:@selector(swicthCameraAction:succ:fail:)]) {
         [_delegate swicthCameraAction:self succ:nil fail:^(NSError *error) {
+            [self showError:error];
+        }];
+    }
+}
+
+// 打开相册
+- (void)openPhotos:(UIButton *)btn {
+    if ([_delegate respondsToSelector:@selector(openPhotos:succ:fail:)]) {
+        [_delegate openPhotos:self succ:nil fail:^(NSError *error) {
             [self showError:error];
         }];
     }

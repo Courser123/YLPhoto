@@ -21,10 +21,11 @@
 #import <GPUImage.h>
 #import "GPUImageBeautifyFilter.h"
 #import "UIImage+fixOrientation.h"
+#import <TZImagePickerController.h>
 
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
-@interface CCCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,CCCameraViewDelegate>
+@interface CCCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,CCCameraViewDelegate,TZImagePickerControllerDelegate>
 {
     AVCaptureSession          *_captureSession;
     
@@ -680,6 +681,19 @@
         return nil;
     } 
     return error;
+}
+
+#pragma mark -- 打开相册
+- (void)openPhotos:(CCCameraView *)cameraView succ:(void (^)(void))succ fail:(void (^)(NSError *))fail {
+    
+    TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    [vc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto){
+        
+    }];
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+
 }
 
 #pragma mark - 聚焦

@@ -3,18 +3,21 @@ PODS:
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
+  - TZImagePickerController (1.8.8)
   - ZLPhotoBrowser (2.2.7)
 
 DEPENDENCIES:
   - GPUImage
   - SDWebImage
+  - TZImagePickerController
   - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  TZImagePickerController: 5d2085b9a749210c3552d35ebe17a6a679438708
   ZLPhotoBrowser: f9868cf42c5cb52821bd139b46a4b1620a41ce6e
 
-PODFILE CHECKSUM: ac4c11b2325cb2385348c0f5a5d0324fa931e3e1
+PODFILE CHECKSUM: e3f1af8a37c8af35d5c492ecf99ab6c612abeeb9
 
 COCOAPODS: 1.1.0.beta.2

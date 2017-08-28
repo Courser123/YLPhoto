@@ -12,8 +12,9 @@
 #import "YLCameraViewController.h"
 #import "CCCameraViewController.h"
 #import <GPUImage.h>
+#import <TZImagePickerController.h>
 
-@interface MainViewController () <UIViewControllerTransitioningDelegate>
+@interface MainViewController () <UIViewControllerTransitioningDelegate,TZImagePickerControllerDelegate>
 
 @property (nonatomic,strong) LQPhotoPickerViewController *photoPickerVC;
 @property (nonatomic,strong) UIScrollView *mainScrollView;
@@ -86,24 +87,19 @@
 }
 
 - (void)tapTheMainScrollView {
+    
     LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 108, 200, 66, 66)];
     [self.mainScrollView addSubview:heartView];
     [heartView animateInView:self.mainScrollView];
     
-//    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-//    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-//    
-//    GPUImageFilter *customFilter = [[GPUImageEmbossFilter alloc] init]; //浮雕效果，带有点3d的感觉
-//    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.width, self.view.height)];
-//    
-//    // Add the view somewhere so it's visible
-//    
-//    [videoCamera addTarget:customFilter];
-//    [customFilter addTarget:filteredVideoView];
-//    
-//    [self.view addSubview:filteredVideoView];
-//    
-//    [videoCamera startCameraCapture];
+    TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    [vc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto){
+        
+    }];
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+    
 }
 
 - (void)tapRecordBtn {

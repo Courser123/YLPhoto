@@ -49,9 +49,24 @@
     [self setupUI];
 }
 
+-(UIImage *)scaleToSize:(UIImage *)image size:(CGSize)size
+{
+    //创建一个bitmap的context
+    //并把他设置成当前的context
+    UIGraphicsBeginImageContext(size);
+    //绘制图片的大小
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    //从当前context中创建一个改变大小后的图片
+    UIImage *endImage=UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    return endImage;
+}
+
 - (void)setupUI {
 //    _image = [_image fixOrientation];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:_image];
+    UIImage *image = [self scaleToSize:_image size:_frame.size];
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
