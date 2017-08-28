@@ -740,7 +740,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y59HB6VK6F;
-				GCC_PREFIX_HEADER = /Users/wangzhongdi/Desktop/YLPhoto/YLPhoto/YLPhoto/Camera/CCCamera.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -765,7 +765,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y59HB6VK6F;
-				GCC_PREFIX_HEADER = /Users/wangzhongdi/Desktop/YLPhoto/YLPhoto/YLPhoto/Camera/CCCamera.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -833,7 +833,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y59HB6VK6F;
-				GCC_PREFIX_HEADER = /Users/wangzhongdi/Desktop/YLPhoto/YLPhoto/YLPhoto/Camera/CCCamera.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

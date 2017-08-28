@@ -50,7 +50,11 @@
 }
 
 - (void)setupUI {
+//    _image = [_image fixOrientation];
+    NSLog(@"%lu",_image.imageOrientation);
+//    _image = [_image normalizedImage];
     _image = [_image fixOrientation];
+    NSLog(@"%lu",_image.imageOrientation);
     UIImageView *imageView = [[UIImageView alloc]initWithImage:_image];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;

@@ -62,6 +62,9 @@
 @property (nonatomic , weak)   GPUImageView *mView;
 @property (nonatomic , strong) GPUImagePicture *stillImageSource;
 
+@property (nonatomic , strong) GPUImageBilateralFilter *bilateralFilter;
+@property (nonatomic , strong) GPUImageBrightnessFilter *brightnessFilter;
+
 @end
 
 @implementation CCCameraViewController
@@ -105,7 +108,33 @@
         //    filter = [[GPUImageStretchDistortionFilter alloc] init]; //伸展失真，哈哈镜
 //            filter = [[GPUImageGlassSphereFilter alloc] init]; //水晶球效果
 //        filter = [[GPUImageEmbossFilter alloc] init]; //浮雕效果，带有点3d的感觉
-        filter = [[GPUImageBeautifyFilter alloc] init]; // 美颜效果
+//        filter = [[GPUImageBeautifyFilter alloc] init]; // 美颜效果
+        
+        //
+        //  4.创建磨皮、美白组合滤镜
+        filter = [[GPUImageFilterGroup alloc] init];
+        
+        //  5.磨皮滤镜
+        GPUImageBilateralFilter *bilateralFilter = [[GPUImageBilateralFilter alloc] init];
+        [filter addFilter:bilateralFilter];
+        _bilateralFilter = bilateralFilter;
+        
+        //  6.美白滤镜
+        GPUImageBrightnessFilter *brightnessFilter = [[GPUImageBrightnessFilter alloc] init];
+        [filter addFilter:brightnessFilter];
+        _brightnessFilter = brightnessFilter;
+        
+        
+        //  7.设置滤镜组链
+        [bilateralFilter addTarget:brightnessFilter];
+        [filter setInitialFilters:@[bilateralFilter]];
+        filter.terminalFilter = brightnessFilter;
+        
+//        //  8.设置GPUImage处理链 从数据源->滤镜->界面展示
+//        [videoCamera addTarget:groupFliter];
+//        [groupFliter addTarget:captureVideoPreview];
+        
+        //
     
         GPUImageView *mView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
         self.mView = mView;
@@ -264,7 +293,7 @@
 #pragma mark - 拍摄照片
 -(void)takePictureImage{
     
-    self.mView.hidden = YES;
+//    self.mView.hidden = YES;
     
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
     if (connection.isVideoOrientationSupported) {
@@ -284,29 +313,11 @@
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
         UIImage *image = [[UIImage alloc]initWithData:imageData];
+        UIImage *currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
+//        UIImage *finalImage = [UIImage imageWithCGImage:[currentFilteredVideoFrame CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
+        UIImage *finalImage = [currentFilteredVideoFrame fixOrientation];
+//        finalImage = [finalImage fixOrientation];
         
-        self.stillImageSource = [[GPUImagePicture alloc] initWithImage:image];
-        [self.filter forceProcessingAtSize:image.size];
-        [self.filter useNextFrameForImageCapture];
-        [self.stillImageSource addTarget:self.filter];
-        [self.stillImageSource processImage];
-        UIImage *currentFilteredVideoFrame = [self.filter imageFromCurrentFramebuffer];
-        
-//        __weak typeof(self) weakSelf = self;
-//        __block UIImage *currentFilteredVideoFrame;
-//        [self.filter setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time){
-//            
-////            [output useNextFrameForImageCapture];
-////            UIImage *image = [output imageFromCurrentFramebuffer];
-//            weakSelf.stillImageSource = [[GPUImagePicture alloc] initWithImage:image];
-//            [weakSelf.stillImageSource addTarget:weakSelf.filter];
-//            [output useNextFrameForImageCapture];
-//            [weakSelf.stillImageSource processImage];
-//            currentFilteredVideoFrame = [output imageFromCurrentFramebuffer];
-//        }];
-        
-        UIImage *finalImage = [UIImage imageWithCGImage:[currentFilteredVideoFrame CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
-        finalImage = [finalImage fixOrientation];
         
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:finalImage frame:self.cameraView.previewView.frame];
         
