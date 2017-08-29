@@ -207,7 +207,6 @@
 {
     self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionFront];
     self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-//    self.mGPUVideoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
     
 //    _captureSession = [[AVCaptureSession alloc]init];
@@ -324,7 +323,6 @@
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame];
         
         [self presentViewController:vc animated:NO completion:^{
-//            self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
             self.mView.hidden = NO;
         }];
     };

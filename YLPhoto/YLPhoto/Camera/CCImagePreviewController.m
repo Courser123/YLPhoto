@@ -64,8 +64,8 @@
 }
 
 - (void)setupUI {
-//    _image = [_image fixOrientation];
     UIImage *image = [self scaleToSize:_image size:_frame.size];
+    image = [image fixOrientation];
     UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
