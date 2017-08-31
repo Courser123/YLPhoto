@@ -76,6 +76,7 @@
     [super viewDidLoad];
     
     [self hideStatusBar];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     _movieURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), @"movie.mov"]];
     _referenceOrientation = AVCaptureVideoOrientationPortrait;
@@ -205,9 +206,13 @@
 // 配置会话
 - (void)setupSession:(NSError **)error
 {
-    self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionFront];
+    self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionBack];
     self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
+    if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
+        self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
+    }else {
+        self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = NO;
+    }
     
 //    _captureSession = [[AVCaptureSession alloc]init];
     _captureSession = self.mGPUVideoCamera.captureSession;
@@ -293,9 +298,10 @@
 
 #pragma mark - 拍摄照片
 -(void)takePictureImage{
+    
     self.mView.hidden = YES;
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
-    if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
+    if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
         connection.videoMirrored = YES;
     }else {
         connection.videoMirrored = NO;
@@ -316,11 +322,10 @@
         }
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
-        UIImage *image = [[UIImage alloc]initWithData:imageData];
+        UIImage *image = [[UIImage alloc] initWithData:imageData];
         UIImage *currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
-        currentFilteredVideoFrame = [UIImage imageWithCGImage:[currentFilteredVideoFrame CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
         
-        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame];
+        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:imgOrientation];
         
         [self presentViewController:vc animated:NO completion:^{
             self.mView.hidden = NO;

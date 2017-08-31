@@ -13,16 +13,18 @@
 {
     UIImage *_image;
     CGRect   _frame;
+    UIImageOrientation _imgOrientation;
 }
 @property (nonatomic,weak) UIButton *saveButton;
 @end
 
 @implementation CCImagePreviewController
 
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame{
+- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame imgOrientation:(UIImageOrientation)imgOrientation{
     if (self = [super initWithNibName:nil bundle:nil]) {
         _image = image;
         _frame = frame;
+        _imgOrientation = imgOrientation;
     }
     return self;
 }
@@ -36,11 +38,11 @@
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
-    return [self initWithImage:nil frame:CGRectZero];
+    return [self initWithImage:nil frame:CGRectZero imgOrientation:0];
 }
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    return [self initWithImage:nil frame:CGRectZero];
+    return [self initWithImage:nil frame:CGRectZero imgOrientation:0];
 }
 
 - (void)viewDidLoad {
@@ -53,9 +55,18 @@
 {
     //创建一个bitmap的context
     //并把他设置成当前的context
-    UIGraphicsBeginImageContext(size);
+//    UIGraphicsBeginImageContext(size);
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+
     //绘制图片的大小
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    if (image.size.height > image.size.width) {
+        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    }else {
+        CGSize newSize = CGSizeMake(size.width, size.width * image.size.height / image.size.width);
+        CGFloat y = size.height * 0.5 - newSize.height * 0.5;
+        [image drawInRect:CGRectMake(0, y, newSize.width, newSize.height)];
+    }
+    
     //从当前context中创建一个改变大小后的图片
     UIImage *endImage=UIGraphicsGetImageFromCurrentImageContext();
     
@@ -64,9 +75,13 @@
 }
 
 - (void)setupUI {
-    UIImage *image = [self scaleToSize:_image size:_frame.size];
-    image = [image fixOrientation];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    NSLog(@"%@",_image);
+    _image = [self scaleToSize:_image size:_frame.size];
+    _image = [_image fixOrientation];
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:_image];
+    imageView.backgroundColor = [UIColor whiteColor];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -117,7 +132,6 @@
 }
 
 - (void)saveImageToPhotos {
-    _image = [_image fixOrientation];
     UIImageWriteToSavedPhotosAlbum(_image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
 }
 
