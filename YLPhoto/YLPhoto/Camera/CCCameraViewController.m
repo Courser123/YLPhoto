@@ -130,7 +130,6 @@
         [filter addFilter:brightnessFilter];
         _brightnessFilter = brightnessFilter;
         
-        
         //  7.设置滤镜组链
         [bilateralFilter addTarget:brightnessFilter];
         [filter setInitialFilters:@[bilateralFilter]];
