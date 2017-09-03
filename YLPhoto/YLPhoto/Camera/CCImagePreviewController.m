@@ -13,18 +13,19 @@
 {
     UIImage *_image;
     CGRect   _frame;
-    UIImageOrientation _imgOrientation;
+    UIDeviceOrientation _deviceOrientation;
+    UIDeviceOrientation _lastOrientation;
 }
 @property (nonatomic,weak) UIButton *saveButton;
 @end
 
 @implementation CCImagePreviewController
 
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame imgOrientation:(UIImageOrientation)imgOrientation{
+- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame imgOrientation:(UIDeviceOrientation)imgOrientation{
     if (self = [super initWithNibName:nil bundle:nil]) {
         _image = image;
         _frame = frame;
-        _imgOrientation = imgOrientation;
+        _deviceOrientation = imgOrientation;
     }
     return self;
 }
@@ -56,35 +57,73 @@
     //创建一个bitmap的context
     //并把他设置成当前的context
 //    UIGraphicsBeginImageContext(size);
-    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-
+//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    
     //绘制图片的大小
     if (image.size.height > image.size.width) {
+        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
         [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     }else {
+        
+        switch (_deviceOrientation) {
+            case UIDeviceOrientationLandscapeLeft:
+                _lastOrientation = _deviceOrientation;
+                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:UIImageOrientationLeft];
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                _lastOrientation = _deviceOrientation;
+                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:UIImageOrientationRight];
+                break;
+            case UIDeviceOrientationPortrait:{
+                UIImageOrientation imgOrientation = [self changeDeviceToImageOrientation:_lastOrientation];
+                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
+            }
+                break;
+            default:
+                break;
+        }
+        
         CGSize newSize = CGSizeMake(size.width, size.width * image.size.height / image.size.width);
-        CGFloat y = size.height * 0.5 - newSize.height * 0.5;
-        [image drawInRect:CGRectMake(0, y, newSize.width, newSize.height)];
+        UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+//        CGFloat y = size.height * 0.5 - newSize.height * 0.5;
+        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     }
     
+//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
     //从当前context中创建一个改变大小后的图片
-    UIImage *endImage=UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *endImage = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     return endImage;
 }
 
+- (UIImageOrientation)changeDeviceToImageOrientation:(UIDeviceOrientation)device {
+    
+    UIImageOrientation imgOrientation = UIImageOrientationUp;
+    switch (device) {
+        case UIDeviceOrientationLandscapeLeft:
+            imgOrientation = UIImageOrientationLeft;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            imgOrientation = UIImageOrientationRight;
+            break;
+        default:
+            break;
+    }
+    return imgOrientation;
+}
+
 - (void)setupUI {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    NSLog(@"%@",_image);
     _image = [self scaleToSize:_image size:_frame.size];
     _image = [_image fixOrientation];
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:_image];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];
     imageView.backgroundColor = [UIColor whiteColor];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.frame = CGRectMake(0, 0, _frame.size.width, _frame.size.height);
     [self.view addSubview:imageView];
     

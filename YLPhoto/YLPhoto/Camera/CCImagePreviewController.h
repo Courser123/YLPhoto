@@ -14,6 +14,6 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame imgOrientation:(UIImageOrientation)imgOrientation NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithImage:(UIImage *)image frame:(CGRect)frame imgOrientation:(UIDeviceOrientation)imgOrientation NS_DESIGNATED_INITIALIZER;
 
 @end

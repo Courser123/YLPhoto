@@ -22,6 +22,7 @@
 #import "GPUImageBeautifyFilter.h"
 #import "UIImage+fixOrientation.h"
 #import <TZImagePickerController.h>
+#import <CoreMotion/CoreMotion.h>
 
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
@@ -53,6 +54,7 @@
 
 @property(nonatomic, strong) CCCameraView *cameraView;
 @property(nonatomic, strong) CCMotionManager *motionManager;
+@property(nonatomic,strong)  CMMotionManager *cmmotionManager;
 @property(nonatomic, strong) AVCaptureDevice *activeCamera;     // 当前输入设备
 @property(nonatomic, strong) AVCaptureDevice *inactiveCamera;   // 不活跃的设备(这里指前摄像头或后摄像头，不包括外接输入设备)
 @property(nonatomic, assign) AVCaptureVideoOrientation	referenceOrientation; // 视频播放方向
@@ -82,12 +84,14 @@
     _referenceOrientation = AVCaptureVideoOrientationPortrait;
     _motionManager = [[CCMotionManager alloc] init];
     
+    self.cmmotionManager = [[CMMotionManager alloc] init];
+    
     self.cameraView = [[CCCameraView alloc] initWithFrame:self.view.bounds];
     self.cameraView.delegate = self;
     [self.view addSubview:self.cameraView];
     
     NSError *error;
-    [self setupSession:&error];
+    [self setupSession:&error position:AVCaptureDevicePositionBack];
     if (!error) {
 //        [self.cameraView.previewView setCaptureSessionsion:_captureSession];
 
@@ -204,9 +208,9 @@
 
 #pragma mark - AVCaptureSession
 // 配置会话
-- (void)setupSession:(NSError **)error
+- (void)setupSession:(NSError **)error position:(AVCaptureDevicePosition)positon
 {
-    self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionBack];
+    self.mGPUVideoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:positon];
     self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
         self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
@@ -216,7 +220,7 @@
     
 //    _captureSession = [[AVCaptureSession alloc]init];
     _captureSession = self.mGPUVideoCamera.captureSession;
-    [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
+//    [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
     
     [self setupSessionInputs:error];
     [self setupSessionOutputs:error];
@@ -297,7 +301,7 @@
 }
 
 #pragma mark - 拍摄照片
--(void)takePictureImage{
+-(void)takePictureImage:(UIDeviceOrientation)orientationNew{
     
     self.mView.hidden = YES;
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
@@ -306,9 +310,11 @@
     }else {
         connection.videoMirrored = NO;
     }
-    if (connection.isVideoOrientationSupported) {
-        connection.videoOrientation = [self currentVideoOrientation];
-    }
+//    if (connection.isVideoOrientationSupported) {
+//        connection.videoOrientation = [self currentVideoOrientation];
+//    }
+//    connection.videoOrientation = AVCaptureVideoOrientationPortrait;
+    
     id takePictureSuccess = ^(CMSampleBufferRef sampleBuffer,NSError *error){
         if (sampleBuffer == NULL) {
             [self showError:error];
@@ -325,7 +331,7 @@
         UIImage *image = [[UIImage alloc] initWithData:imageData];
         UIImage *currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
         
-        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:imgOrientation];
+        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
         
         [self presentViewController:vc animated:NO completion:^{
             self.mView.hidden = NO;
@@ -629,6 +635,19 @@
     }else {
         self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
     }
+//    self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    _captureSession = self.mGPUVideoCamera.captureSession;
+    NSError *error;
+    [self setupSessionInputs:&error];
+    [self setupSessionOutputs:&error];
+    
+//    NSError *error;
+//    if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
+//        [self setupSession:&error position:AVCaptureDevicePositionBack];
+//    }else {
+//        [self setupSession:&error position:AVCaptureDevicePositionBack];
+//    }
+//    [self startCaptureSession];
 //    [_captureSession beginConfiguration];
 //    _videoConnection = [_videoOutput connectionWithMediaType:AVMediaTypeVideo];
 //    _videoConnection.videoOrientation = self.referenceOrientation;
@@ -909,7 +928,8 @@ static const NSString *CameraAdjustingExposureContext;
 #pragma mark - 拍照/录影点击事件
 - (void)takePhotoAction:(CCCameraView *)cameraView
 {
-    [self takePictureImage];
+//    [self takePictureImage];
+    [self takePhoto];
 }
 
 -(void)startRecordVideoAction:(CCCameraView *)cameraView
@@ -974,4 +994,52 @@ static const NSString *CameraAdjustingExposureContext;
     // Dispose of any resources that can be recreated.
 }
 
+// 方向
+- (UIDeviceOrientation)takePhoto {
+    
+    if([self.cmmotionManager isDeviceMotionAvailable]) {
+        
+        __block UIDeviceOrientation orientationNew = UIDeviceOrientationUnknown;
+        [self.cmmotionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData * _Nullable accelerometerData, NSError * _Nullable error) {
+            CMAcceleration acceleration = accelerometerData.acceleration;
+        
+            if (acceleration.x >= 0.75) {//home button left
+                orientationNew = UIDeviceOrientationLandscapeRight;
+                NSLog(@"右");
+                [self takePictureImage:orientationNew];
+                [self.cmmotionManager stopAccelerometerUpdates];
+            }
+            else if (acceleration.x <= -0.75) {//home button right
+                orientationNew = UIDeviceOrientationLandscapeLeft;
+                NSLog(@"左");
+                [self takePictureImage:orientationNew];
+                [self.cmmotionManager stopAccelerometerUpdates];
+            }
+            else if (acceleration.y <= -0.75) {
+                orientationNew = UIDeviceOrientationPortrait;
+                NSLog(@"上");
+                [self takePictureImage:orientationNew];
+                [self.cmmotionManager stopAccelerometerUpdates];
+            }
+            else if (acceleration.y >= 0.75) {
+                orientationNew = UIDeviceOrientationPortraitUpsideDown;
+                NSLog(@"下");
+                [self takePictureImage:orientationNew];
+                [self.cmmotionManager stopAccelerometerUpdates];
+            }
+            else {
+                // Consider same as last time
+                [self takePictureImage:orientationNew];
+                [self.cmmotionManager stopAccelerometerUpdates];
+                return;
+            }
+
+        }];
+  
+        return orientationNew;
+    
+    }
+    
+    return UIDeviceOrientationUnknown;
+}
 @end
