@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "LQPhotoPickerViewController.h"
 #import "LDSDKHeartFlyView.h"
 #import "YLCameraViewController.h"
 #import "CCCameraViewController.h"
@@ -16,7 +15,6 @@
 
 @interface MainViewController () <UIViewControllerTransitioningDelegate,TZImagePickerControllerDelegate>
 
-@property (nonatomic,strong) LQPhotoPickerViewController *photoPickerVC;
 @property (nonatomic,strong) UIScrollView *mainScrollView;
 @property (nonatomic,strong) UIImageView *mainnScrollViewImageView;
 @property (nonatomic,strong) CADisplayLink *displayLink;
@@ -34,7 +32,6 @@
     _contentOffsetX = 0;
     self.navigationController.navigationBar.hidden = YES;
     _mainScrollView = [[UIScrollView alloc] init];
-//    _mainScrollView.userInteractionEnabled = YES;
     _mainScrollView.showsVerticalScrollIndicator = NO;
     _mainScrollView.showsHorizontalScrollIndicator = NO;
     _mainnScrollViewImageView = [[UIImageView alloc] init];
@@ -48,20 +45,18 @@
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(moveTheScrollView)];
     [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     
-//    _testImageView = [[UIImageView alloc] init];
-//    _testImageView.image = [UIImage imageNamed:@"1502889412_765176.png"];
-//    [_mainScrollView addSubview:_testImageView];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheMainScrollView)];
     [_mainScrollView addGestureRecognizer:tap];
     
     _recordBtn = [[UIButton alloc] init];
-    [_recordBtn setBackgroundImage:[UIImage imageNamed:@"sy_70450177851.jpg"] forState:UIControlStateNormal];
+    [_recordBtn setBackgroundImage:[UIImage imageNamed:@"timgC.jpg"] forState:UIControlStateNormal];
     _recordBtn.bounds = CGRectMake(0, 0, 60, 60);
     _recordBtn.layer.cornerRadius = 30;
     _recordBtn.layer.masksToBounds = YES;
     [_recordBtn addTarget:self action:@selector(tapRecordBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_recordBtn];
+    
+    // 设置各种功能按键
     
 }
 
@@ -78,7 +73,6 @@
     _mainScrollView.frame = self.view.bounds;
     _mainScrollView.contentSize = CGSizeMake(self.view.bounds.size.width + 66, self.view.bounds.size.height);
     _mainnScrollViewImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, _mainScrollView.contentSize.height);
-//    _testImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, 100);
     _recordBtn.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height - 100);
 }
 
@@ -92,19 +86,10 @@
     [self.mainScrollView addSubview:heartView];
     [heartView animateInView:self.mainScrollView];
     
-    TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
-    [vc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto){
-        
-    }];
-    [self presentViewController:vc animated:YES completion:^{
-        
-    }];
-    
 }
 
 - (void)tapRecordBtn {
     
-//    YLCameraViewController *vc = [[YLCameraViewController alloc] init];
     CCCameraViewController *vc = [[CCCameraViewController alloc] init];
     [self presentViewController:vc animated:YES completion:^{
         

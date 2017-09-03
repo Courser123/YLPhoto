@@ -23,6 +23,8 @@
 #import "UIImage+fixOrientation.h"
 #import <TZImagePickerController.h>
 #import <CoreMotion/CoreMotion.h>
+#import "FLAnimatedImage.h"
+#import "FLAnimatedImageView.h"
 
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
@@ -68,6 +70,8 @@
 @property (nonatomic , strong) GPUImageBilateralFilter *bilateralFilter;
 @property (nonatomic , strong) GPUImageBrightnessFilter *brightnessFilter;
 
+@property (nonatomic , weak)   UIImageView *backImageView;
+
 @end
 
 @implementation CCCameraViewController
@@ -86,7 +90,23 @@
     
     self.cmmotionManager = [[CMMotionManager alloc] init];
     
+//    FLAnimatedImageView *backImageView = [[FLAnimatedImageView alloc] init];
+//    self.backImageView = backImageView;
+//    backImageView.hidden = YES;
+//    backImageView.frame = self.view.bounds;
+//    NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"741504439902_.pic" withExtension:@"jpg"];
+//    NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+//    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:imageData];
+//    backImageView.animatedImage = image;
+
+    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.backImageView = backImageView;
+    backImageView.hidden = YES;
+    backImageView.image = [UIImage imageNamed:@"741504439902_.pic.jpg"];
+    [self.view addSubview:backImageView];
+    
     self.cameraView = [[CCCameraView alloc] initWithFrame:self.view.bounds];
+    self.cameraView.backgroundColor = [UIColor clearColor];
     self.cameraView.delegate = self;
     [self.view addSubview:self.cameraView];
     
@@ -142,6 +162,7 @@
         //
     
         GPUImageView *mView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
+        mView.backgroundColor = [UIColor clearColor];
         self.mView = mView;
         
         [self.mGPUVideoCamera addTarget:filter];
@@ -303,16 +324,19 @@
 -(void)takePictureImage:(UIDeviceOrientation)orientationNew{
     
     self.mView.hidden = YES;
+    self.backImageView.hidden = NO;
+    self.cameraView.hidden = YES;
+    
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
     if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
         connection.videoMirrored = YES;
     }else {
         connection.videoMirrored = NO;
     }
-//    if (connection.isVideoOrientationSupported) {
-//        connection.videoOrientation = [self currentVideoOrientation];
-//    }
-//    connection.videoOrientation = AVCaptureVideoOrientationPortrait;
+    //    if (connection.isVideoOrientationSupported) {
+    //        connection.videoOrientation = [self currentVideoOrientation];
+    //    }
+    //    connection.videoOrientation = AVCaptureVideoOrientationPortrait;
     
     id takePictureSuccess = ^(CMSampleBufferRef sampleBuffer,NSError *error){
         if (sampleBuffer == NULL) {
@@ -332,11 +356,17 @@
         
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
         
-        [self presentViewController:vc animated:NO completion:^{
-            self.mView.hidden = NO;
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self presentViewController:vc animated:NO completion:^{
+                self.mView.hidden = NO;
+                self.backImageView.hidden = YES;
+                self.cameraView.hidden = NO;
+            }];
+        });
+        
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
+    
 }
 
 #pragma mark - 录制视频
@@ -704,11 +734,20 @@
     return error;
 }
 
-#pragma mark -- 打开相册
+#pragma mark 打开相册
 - (void)openPhotos:(CCCameraView *)cameraView succ:(void (^)(void))succ fail:(void (^)(NSError *))fail {
     
+    self.mView.hidden = YES;
+    self.backImageView.hidden = NO;
     TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
     [vc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto){
+        UIImage *image = photos.firstObject;
+        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:image frame:self.view.frame imgOrientation:UIDeviceOrientationUnknown];
+        
+        [self presentViewController:vc animated:NO completion:^{
+            self.mView.hidden = NO;
+            self.backImageView.hidden = YES;
+        }];
         
     }];
     [self presentViewController:vc animated:YES completion:^{

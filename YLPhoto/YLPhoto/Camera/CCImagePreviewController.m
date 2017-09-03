@@ -8,6 +8,7 @@
 
 #import "CCImagePreviewController.h"
 #import "UIImage+fixOrientation.h"
+#import <GPUImage.h>
 
 @interface CCImagePreviewController ()
 {
@@ -17,6 +18,8 @@
     UIDeviceOrientation _lastOrientation;
 }
 @property (nonatomic,weak) UIButton *saveButton;
+@property (nonatomic,weak) UIImageView *imageView;
+
 @end
 
 @implementation CCImagePreviewController
@@ -87,7 +90,6 @@
         
         CGSize newSize = CGSizeMake(size.width, size.width * image.size.height / image.size.width);
         UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
-//        CGFloat y = size.height * 0.5 - newSize.height * 0.5;
         [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     }
     
@@ -122,6 +124,7 @@
     _image = [self scaleToSize:_image size:_frame.size];
     _image = [_image fixOrientation];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];
+    self.imageView = imageView;
     imageView.backgroundColor = [UIColor whiteColor];
     imageView.userInteractionEnabled = YES;
     imageView.layer.masksToBounds = YES;
@@ -157,8 +160,18 @@
     // 添加滤镜按钮
     UIButton *filterButton = [[UIButton alloc] init];
     [filterButton setBackgroundImage:[UIImage imageNamed:@"filter_icon_filter"] forState:UIControlStateNormal];
+    [filterButton addTarget:self action:@selector(addFilter:) forControlEvents:UIControlEventTouchUpInside];
     filterButton.frame = CGRectMake(coverView.width - 70, coverView.height - 100, 40, 40);
     [coverView addSubview:filterButton];
+}
+
+- (void)addFilter:(UIButton *)btn {
+    
+//    GPUImageSepiaFilter *filter = [[GPUImageSepiaFilter alloc] init]; // 褐色(怀旧)
+    GPUImageSobelEdgeDetectionFilter *filter = [[GPUImageSobelEdgeDetectionFilter alloc] init];
+    _image = [filter imageByFilteringImage:_image];
+    self.imageView.image = _image;
+    btn.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
