@@ -37,7 +37,7 @@
     _mainnScrollViewImageView = [[UIImageView alloc] init];
     _mainScrollView.bounces = NO;
     
-    _mainnScrollViewImageView.image = [UIImage imageNamed:@"WechatIMG70.jpeg"];
+//    _mainnScrollViewImageView.image = [UIImage imageNamed:@"WechatIMG70.jpeg"];
     _mainnScrollViewImageView.contentMode = UIViewContentModeScaleToFill;
     [_mainScrollView addSubview:_mainnScrollViewImageView];
     [self.view addSubview:_mainScrollView];

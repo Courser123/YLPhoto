@@ -102,7 +102,7 @@
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.backImageView = backImageView;
     backImageView.hidden = YES;
-    backImageView.image = [UIImage imageNamed:@"741504439902_.pic.jpg"];
+//    backImageView.image = [UIImage imageNamed:@"741504439902_.pic.jpg"];
     [self.view addSubview:backImageView];
     
     self.cameraView = [[CCCameraView alloc] initWithFrame:self.view.bounds];
@@ -134,33 +134,8 @@
         //    filter = [[GPUImageStretchDistortionFilter alloc] init]; //伸展失真，哈哈镜
 //            filter = [[GPUImageGlassSphereFilter alloc] init]; //水晶球效果
 //        filter = [[GPUImageEmbossFilter alloc] init]; //浮雕效果，带有点3d的感觉
-//        filter = [[GPUImageBeautifyFilter alloc] init]; // 美颜效果
+        filter = [[GPUImageBeautifyFilter alloc] init]; // 美颜效果
         
-        //
-        //  4.创建磨皮、美白组合滤镜
-        filter = [[GPUImageFilterGroup alloc] init];
-        
-        //  5.磨皮滤镜
-        GPUImageBilateralFilter *bilateralFilter = [[GPUImageBilateralFilter alloc] init];
-        [filter addFilter:bilateralFilter];
-        _bilateralFilter = bilateralFilter;
-        
-        //  6.美白滤镜
-        GPUImageBrightnessFilter *brightnessFilter = [[GPUImageBrightnessFilter alloc] init];
-        [filter addFilter:brightnessFilter];
-        _brightnessFilter = brightnessFilter;
-        
-        //  7.设置滤镜组链
-        [bilateralFilter addTarget:brightnessFilter];
-        [filter setInitialFilters:@[bilateralFilter]];
-        filter.terminalFilter = brightnessFilter;
-        
-//        //  8.设置GPUImage处理链 从数据源->滤镜->界面展示
-//        [videoCamera addTarget:groupFliter];
-//        [groupFliter addTarget:captureVideoPreview];
-        
-        //
-    
         GPUImageView *mView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
         mView.backgroundColor = [UIColor clearColor];
         self.mView = mView;
@@ -343,12 +318,6 @@
             [self showError:error];
             return ;
         }
-        UIImageOrientation imgOrientation;
-        if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera == YES) {
-            imgOrientation = UIImageOrientationLeftMirrored;
-        }else {
-            imgOrientation = UIImageOrientationRight;
-        }
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
         UIImage *image = [[UIImage alloc] initWithData:imageData];
@@ -356,7 +325,7 @@
         
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self presentViewController:vc animated:NO completion:^{
                 self.mView.hidden = NO;
                 self.backImageView.hidden = YES;

@@ -83,7 +83,6 @@
             }
                 break;
             default:
-                NSLog(@"%lu",_lastOrientation);
                 image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
                 break;
         }
