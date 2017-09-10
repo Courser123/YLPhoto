@@ -10,12 +10,15 @@
 #import "UIImage+fixOrientation.h"
 #import <GPUImage.h>
 
+#import "FWBeautyViewController.h"
+
 @interface CCImagePreviewController ()
 {
     UIImage *_image;
     CGRect   _frame;
     UIDeviceOrientation _deviceOrientation;
     UIDeviceOrientation _lastOrientation;
+    UIImage *_originalImage;
 }
 @property (nonatomic,weak) UIButton *saveButton;
 @property (nonatomic,weak) UIImageView *imageView;
@@ -29,6 +32,7 @@
         _image = image;
         _frame = frame;
         _deviceOrientation = imgOrientation;
+        _originalImage = image;
     }
     return self;
 }
@@ -167,10 +171,16 @@
 - (void)addFilter:(UIButton *)btn {
     
 //    GPUImageSepiaFilter *filter = [[GPUImageSepiaFilter alloc] init]; // 褐色(怀旧)
-    GPUImageSobelEdgeDetectionFilter *filter = [[GPUImageSobelEdgeDetectionFilter alloc] init];
-    _image = [filter imageByFilteringImage:_image];
-    self.imageView.image = _image;
-    btn.enabled = NO;
+//    GPUImageSobelEdgeDetectionFilter *filter = [[GPUImageSobelEdgeDetectionFilter alloc] init];
+//    _image = [filter imageByFilteringImage:_image];
+//    self.imageView.image = _image;
+//    btn.enabled = NO;
+    
+    FWBeautyViewController *fw = [[FWBeautyViewController alloc] initWithImage:_image];
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.delegate present:fw];
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

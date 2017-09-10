@@ -28,7 +28,7 @@
 
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
-@interface CCCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,CCCameraViewDelegate,TZImagePickerControllerDelegate>
+@interface CCCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,CCCameraViewDelegate,TZImagePickerControllerDelegate,CCImagePreviewControllerDelegate>
 {
     AVCaptureSession          *_captureSession;
     
@@ -102,7 +102,7 @@
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.backImageView = backImageView;
     backImageView.hidden = YES;
-//    backImageView.image = [UIImage imageNamed:@"741504439902_.pic.jpg"];
+    backImageView.image = [UIImage imageNamed:@"bg_home_defaultRandom@2x.jpg"];
     [self.view addSubview:backImageView];
     
     self.cameraView = [[CCCameraView alloc] initWithFrame:self.view.bounds];
@@ -324,8 +324,9 @@
         UIImage *currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
         
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
+        vc.delegate = self;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self presentViewController:vc animated:NO completion:^{
                 self.mView.hidden = NO;
                 self.backImageView.hidden = YES;
@@ -719,6 +720,12 @@
         }];
         
     }];
+    
+    [vc setImagePickerControllerDidCancelHandle:^{
+        self.mView.hidden = NO;
+        self.backImageView.hidden = YES;
+    }];
+    
     [self presentViewController:vc animated:YES completion:^{
         
     }];
@@ -1049,4 +1056,9 @@ static const NSString *CameraAdjustingExposureContext;
     
     return UIDeviceOrientationUnknown;
 }
+
+- (void)present:(UIViewController *)vc {
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 @end

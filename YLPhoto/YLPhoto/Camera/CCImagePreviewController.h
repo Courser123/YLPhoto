@@ -8,7 +8,16 @@
 
 #import "CCBaseViewController.h"
 
+@protocol CCImagePreviewControllerDelegate <NSObject>
+
+@required
+- (void)present:(UIViewController *)vc;
+
+@end
+
 @interface CCImagePreviewController : CCBaseViewController
+
+@property (nonatomic, weak) id<CCImagePreviewControllerDelegate> delegate;
 
 + (instancetype)new  NS_UNAVAILABLE;
 

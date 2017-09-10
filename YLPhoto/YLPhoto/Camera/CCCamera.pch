@@ -71,3 +71,13 @@ _Pragma("chang diagnostic pop)
 #define CD_HYXXK_FONT(cd_font) [UIFont fontWithName:@"HYi2gj" size:cd_font];                 //汉仪细行楷
 
 #endif /* CCCamera_pch */
+
+
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#import "ConstantsConfig.h"
+#import <GPUImage.h>
+#import "GPUImageFourInputFilter.h"
+#import "FWCommonTools.h"
+

@@ -37,19 +37,16 @@
     _mainnScrollViewImageView = [[UIImageView alloc] init];
     _mainScrollView.bounces = NO;
     
-//    _mainnScrollViewImageView.image = [UIImage imageNamed:@"WechatIMG70.jpeg"];
+    _mainnScrollViewImageView.image = [UIImage imageNamed:@"WechatIMG77.jpeg"];
     _mainnScrollViewImageView.contentMode = UIViewContentModeScaleToFill;
     [_mainScrollView addSubview:_mainnScrollViewImageView];
     [self.view addSubview:_mainScrollView];
-    
-    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(moveTheScrollView)];
-    [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTheMainScrollView)];
     [_mainScrollView addGestureRecognizer:tap];
     
     _recordBtn = [[UIButton alloc] init];
-    [_recordBtn setBackgroundImage:[UIImage imageNamed:@"timgC.jpg"] forState:UIControlStateNormal];
+    [_recordBtn setBackgroundImage:[UIImage imageNamed:@"timg1.jpg"] forState:UIControlStateNormal];
     _recordBtn.bounds = CGRectMake(0, 0, 60, 60);
     _recordBtn.layer.cornerRadius = 30;
     _recordBtn.layer.masksToBounds = YES;
@@ -62,7 +59,7 @@
 
 - (void)moveTheScrollView {
     
-    if (_mainScrollView.contentOffset.x <= 65) {
+    if (_mainScrollView.contentOffset.x <= 107) {
         _contentOffsetX = 0.3;
         _mainScrollView.contentOffset = CGPointMake(_mainScrollView.contentOffset.x + _contentOffsetX, 0);
     }
@@ -71,7 +68,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     _mainScrollView.frame = self.view.bounds;
-    _mainScrollView.contentSize = CGSizeMake(self.view.bounds.size.width + 66, self.view.bounds.size.height);
+    _mainScrollView.contentSize = CGSizeMake(self.view.bounds.size.width + 108, self.view.bounds.size.height);
     _mainnScrollViewImageView.frame = CGRectMake(0, 0, _mainScrollView.contentSize.width, _mainScrollView.contentSize.height);
     _recordBtn.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height - 100);
 }
@@ -97,6 +94,13 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _mainScrollView.contentOffset = CGPointZero;
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(moveTheScrollView)];
+    [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.displayLink invalidate];
@@ -106,6 +110,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    
 }
 
 #pragma mark -- delegate

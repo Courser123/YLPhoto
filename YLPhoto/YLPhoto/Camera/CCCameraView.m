@@ -128,7 +128,7 @@
     UIButton *dismissBtn = [[UIButton alloc] init];
     [dismissBtn setBackgroundImage:[UIImage imageNamed:@"alert_ico_band_close"] forState:UIControlStateNormal];
     [dismissBtn  addTarget:self action:@selector(dismissVC) forControlEvents:UIControlEventTouchUpInside];
-    dismissBtn.frame = CGRectMake(15, 20, 30, 30);
+    dismissBtn.frame = CGRectMake(15, 20, 35, 35);
     [self.topView addSubview:dismissBtn];
     
     // 转换前后摄像头
