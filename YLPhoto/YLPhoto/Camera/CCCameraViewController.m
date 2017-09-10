@@ -713,7 +713,7 @@
     [vc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto){
         UIImage *image = photos.firstObject;
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:image frame:self.view.frame imgOrientation:UIDeviceOrientationUnknown];
-        
+        vc.delegate = self;
         [self presentViewController:vc animated:NO completion:^{
             self.mView.hidden = NO;
             self.backImageView.hidden = YES;
