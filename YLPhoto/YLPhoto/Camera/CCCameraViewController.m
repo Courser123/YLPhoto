@@ -71,6 +71,7 @@
 @property (nonatomic , strong) GPUImageBrightnessFilter *brightnessFilter;
 
 @property (nonatomic , weak)   UIImageView *backImageView;
+@property (nonatomic,  weak)   UIButton *flashBtn;
 
 @end
 
@@ -89,15 +90,6 @@
     _motionManager = [[CCMotionManager alloc] init];
     
     self.cmmotionManager = [[CMMotionManager alloc] init];
-    
-//    FLAnimatedImageView *backImageView = [[FLAnimatedImageView alloc] init];
-//    self.backImageView = backImageView;
-//    backImageView.hidden = YES;
-//    backImageView.frame = self.view.bounds;
-//    NSURL *imageUrl = [[NSBundle mainBundle] URLForResource:@"741504439902_.pic" withExtension:@"jpg"];
-//    NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-//    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:imageData];
-//    backImageView.animatedImage = image;
 
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.backImageView = backImageView;
@@ -140,8 +132,10 @@
         mView.backgroundColor = [UIColor clearColor];
         self.mView = mView;
         
-        [self.mGPUVideoCamera addTarget:filter];
-        [filter addTarget:mView];
+//        [self.mGPUVideoCamera addTarget:filter];
+//        [filter addTarget:mView];
+
+        [self.mGPUVideoCamera addTarget:mView];
         
         [self.view addSubview:mView];
         [self.view sendSubviewToBack:mView];
@@ -184,7 +178,8 @@
 
 - (AVCaptureDevice *)activeCamera
 {
-    return _deviceInput.device;
+//    return _deviceInput.device;
+    return self.mGPUVideoCamera.inputCamera;
 }
 
 - (AVCaptureDevice *)inactiveCamera
@@ -298,9 +293,9 @@
 #pragma mark - 拍摄照片
 -(void)takePictureImage:(UIDeviceOrientation)orientationNew{
     
-    self.mView.hidden = YES;
-    self.backImageView.hidden = NO;
-    self.cameraView.hidden = YES;
+//    self.mView.hidden = YES;
+//    self.backImageView.hidden = NO;
+//    self.cameraView.hidden = YES;
     
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
     if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
@@ -326,13 +321,16 @@
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
         vc.delegate = self;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self presentViewController:vc animated:NO completion:^{
-                self.mView.hidden = NO;
-                self.backImageView.hidden = YES;
-                self.cameraView.hidden = NO;
-            }];
-        });
+        [self presentViewController:vc animated:YES completion:^{
+            
+        }];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self presentViewController:vc animated:NO completion:^{
+//                self.mView.hidden = NO;
+//                self.backImageView.hidden = YES;
+//                self.cameraView.hidden = NO;
+//            }];
+//        });
         
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
@@ -628,11 +626,29 @@
 #pragma mark - 转换前后摄像头
 - (void)swicthCameraAction:(CCCameraView *)cameraView succ:(void (^)(void))succ fail:(void (^)(NSError *))fail
 {
+    if (_currentflashMode == AVCaptureFlashModeOn) {
+        [self setFlashMode:AVCaptureFlashModeOff];
+    }
+    if (_currentflashMode == AVCaptureFlashModeOn) {
+        self.flashBtn.backgroundColor = [UIColor grayColor];
+    }else {
+        self.flashBtn.backgroundColor = [UIColor clearColor];
+    }
     [self.mGPUVideoCamera rotateCamera];
     if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
         self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = NO;
+        NSLog(@"%@",[NSThread currentThread]);
+        [self.mGPUVideoCamera removeAllTargets];
+//        [self.mGPUVideoCamera addTarget:self.filter];
+//        [self.filter addTarget:self.mView];
+        [self.mGPUVideoCamera addTarget:self.mView];
     }else {
         self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
+        NSLog(@"%@",[NSThread currentThread]);
+        [self.mGPUVideoCamera removeAllTargets];
+        [self.mGPUVideoCamera addTarget:self.filter];
+        [self.filter addTarget:self.mView];
+        
     }
 //    self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     _captureSession = self.mGPUVideoCamera.captureSession;
@@ -848,8 +864,14 @@ static const NSString *CameraAdjustingExposureContext;
 #pragma mark - 闪光灯
 -(void)flashLightAction:(CCCameraView *)cameraView succ:(void (^)(void))succ fail:(void (^)(NSError *))fail
 {
+    self.flashBtn = cameraView.flashBtn;
     id error = [self changeFlash:[self flashMode] == AVCaptureFlashModeOn?AVCaptureFlashModeOff:AVCaptureFlashModeOn];
     error?!fail?:fail(error):!succ?:succ();
+    if (_currentflashMode == AVCaptureFlashModeOn) {
+        cameraView.flashBtn.backgroundColor = [UIColor grayColor];
+    }else {
+        cameraView.flashBtn.backgroundColor = [UIColor clearColor];
+    }
 }
 
 - (BOOL)cameraHasFlash {

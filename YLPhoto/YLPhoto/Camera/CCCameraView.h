@@ -51,6 +51,8 @@
 
 @property(nonatomic, assign, readonly) NSInteger type; // 1：拍照 2：视频
 
+@property(nonatomic, strong) UIButton *flashBtn;
+
 -(void)changeTorch:(BOOL)on;
 
 -(void)changeFlash:(BOOL)on;

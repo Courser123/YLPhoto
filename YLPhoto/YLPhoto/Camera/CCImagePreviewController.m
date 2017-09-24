@@ -59,17 +59,63 @@
     [self setupUI];
 }
 
+//-(UIImage *)scaleToSize:(UIImage *)image size:(CGSize)size
+//{
+//    //创建一个bitmap的context
+//    //并把他设置成当前的context
+////    UIGraphicsBeginImageContext(size);
+////    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+//    
+//    //绘制图片的大小
+//    if (image.size.height > image.size.width) {
+//        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+//        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+//    }else {
+//        
+//        switch (_deviceOrientation) {
+//            case UIDeviceOrientationLandscapeLeft:
+//                _lastOrientation = _deviceOrientation;
+//                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:UIImageOrientationLeft];
+//                break;
+//            case UIDeviceOrientationLandscapeRight:
+//                _lastOrientation = _deviceOrientation;
+//                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:UIImageOrientationRight];
+//                break;
+//            case UIDeviceOrientationPortrait:{
+//                UIImageOrientation imgOrientation = [self changeDeviceToImageOrientation:_lastOrientation];
+//                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:imgOrientation];
+//            }
+//                break;
+//            default:
+//                image = [UIImage imageWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
+//                break;
+//        }
+//        
+//        CGSize newSize = CGSizeMake(size.width, size.width * image.size.height / image.size.width);
+//        UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+//        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+//    }
+//    
+////    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+//    
+//    //从当前context中创建一个改变大小后的图片
+//    UIImage *endImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//    UIGraphicsEndImageContext();
+//    return endImage;
+//}
+
 -(UIImage *)scaleToSize:(UIImage *)image size:(CGSize)size
 {
     //创建一个bitmap的context
     //并把他设置成当前的context
-//    UIGraphicsBeginImageContext(size);
-//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    //    UIGraphicsBeginImageContext(size);
+    //    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     
     //绘制图片的大小
     if (image.size.height > image.size.width) {
-        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+//        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+//        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     }else {
         
         switch (_deviceOrientation) {
@@ -91,19 +137,21 @@
                 break;
         }
         
-        CGSize newSize = CGSizeMake(size.width, size.width * image.size.height / image.size.width);
-        UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
-        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+//        CGSize newSize = CGSizeMake(size.width, size.width * image.size.height / image.size.width);
+//        UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+//        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     }
     
-//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    //    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     
     //从当前context中创建一个改变大小后的图片
-    UIImage *endImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    return endImage;
+//    UIImage *endImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//    UIGraphicsEndImageContext();
+//    return endImage;
+    return image;
 }
+
 
 - (UIImageOrientation)changeDeviceToImageOrientation:(UIDeviceOrientation)device {
     

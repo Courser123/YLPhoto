@@ -19,7 +19,7 @@
 @property(nonatomic, strong) UIView *exposureView; // 曝光动画view
 
 @property(nonatomic, strong) UIButton *torchBtn;
-@property(nonatomic, strong) UIButton *flashBtn;
+//@property(nonatomic, strong) UIButton *flashBtn;
 @property(nonatomic, strong) UIButton *photoBtn;
 
 @end
@@ -128,7 +128,7 @@
     UIButton *dismissBtn = [[UIButton alloc] init];
     [dismissBtn setBackgroundImage:[UIImage imageNamed:@"alert_ico_band_close"] forState:UIControlStateNormal];
     [dismissBtn  addTarget:self action:@selector(dismissVC) forControlEvents:UIControlEventTouchUpInside];
-    dismissBtn.frame = CGRectMake(15, 20, 35, 35);
+    dismissBtn.frame = CGRectMake(15, 15, 35, 35);
     [self.topView addSubview:dismissBtn];
     
     // 转换前后摄像头
@@ -139,14 +139,15 @@
     [switchCameraButton addTarget:self action:@selector(switchCameraClick:) forControlEvents:UIControlEventTouchUpInside];
 //    [switchCameraButton sizeToFit];
 //    switchCameraButton.center = CGPointMake(switchCameraButton.width/2+10, _topView.height/2);
-    switchCameraButton.frame = CGRectMake(self.width - 150, 20, 30, 30);
+    switchCameraButton.frame = CGRectMake(self.width - 150, 16, 30, 30);
+    [switchCameraButton sizeToFit];
     [self.topView addSubview:switchCameraButton];
     
     // 相册选择
     UIButton *photosButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [photosButton setBackgroundImage:[UIImage imageNamed:@"WechatIMG58.jpeg"] forState:UIControlStateNormal];
     [photosButton addTarget:self action:@selector(openPhotos:) forControlEvents:UIControlEventTouchUpInside];
-    photosButton.frame = CGRectMake(self.width - 100 , 20, 30, 30);
+    photosButton.frame = CGRectMake(self.width - 100 , 18, 30, 30);
     photosButton.layer.cornerRadius = 15;
     photosButton.layer.masksToBounds = YES;
     [self.topView addSubview:photosButton];
@@ -164,13 +165,16 @@
     
     // 闪光灯
     UIButton *flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [flashButton setTitle:@"闪光灯" forState:UIControlStateNormal];
+//    [flashButton setTitle:@"闪光灯" forState:UIControlStateNormal];
+    [flashButton setBackgroundImage:[UIImage imageNamed:@"menu_more_flash"] forState:UIControlStateNormal];
     [flashButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [flashButton setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
     [flashButton addTarget:self action:@selector(flashClick:) forControlEvents:UIControlEventTouchUpInside];
     [flashButton sizeToFit];
-    flashButton.center = CGPointMake(flashButton.width/2 + lightButton.right+10, _topView.height/2);
-//    [self.topView addSubview:flashButton];
+    flashButton.center = CGPointMake(flashButton.width/2 + lightButton.right+12, _topView.height/2);
+    flashButton.layer.cornerRadius = flashButton.size.width * 0.5;
+    flashButton.layer.masksToBounds = YES;
+    [self.topView addSubview:flashButton];
     _flashBtn = flashButton;
     
     // 重置对焦、曝光
@@ -302,6 +306,11 @@
 
 // 闪光灯
 -(void)flashClick:(UIButton *)btn{
+//    if (btn.backgroundColor != [UIColor grayColor]) {
+//        btn.backgroundColor = [UIColor grayColor];
+//    }else {
+//        btn.backgroundColor = [UIColor clearColor];
+//    }    
     if ([_delegate respondsToSelector:@selector(flashLightAction:succ:fail:)]) {
         [_delegate flashLightAction:self succ:^{
             _flashBtn.selected = !_flashBtn.selected;
