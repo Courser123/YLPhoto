@@ -9,7 +9,6 @@
 #import "CCImagePreviewController.h"
 #import "UIImage+fixOrientation.h"
 #import <GPUImage.h>
-
 #import "FWBeautyViewController.h"
 
 @interface CCImagePreviewController ()

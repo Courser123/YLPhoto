@@ -410,7 +410,6 @@
 		132D37861F5301F100601246 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D37851F5301F100601246 /* UIImage+fixOrientation.m */; };
 		132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */; };
 		132E494B1F5C25F700526767 /* 741504439902_.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 132E494A1F5C25F700526767 /* 741504439902_.pic.jpg */; };
-		132E494D1F5C25FD00526767 /* 751504439903_.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 132E494C1F5C25FD00526767 /* 751504439903_.pic.jpg */; };
 		132E49551F5C376B00526767 /* 761504444384_.pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 132E49541F5C376B00526767 /* 761504444384_.pic.jpg */; };
 		132E49571F5C383500526767 /* timg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 132E49561F5C383500526767 /* timg1.jpg */; };
 		132E498A1F5C3BF100526767 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 132E49871F5C3BF100526767 /* FLAnimatedImage.m */; };
@@ -432,6 +431,7 @@
 		1333F40E1F496A2D003425D3 /* UIView+CCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F4011F496A2D003425D3 /* UIView+CCAdditions.m */; };
 		1333F40F1F496A2D003425D3 /* UIView+CCHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F4031F496A2D003425D3 /* UIView+CCHUD.m */; };
 		1335521B1F40361F009AF77A /* WechatIMG58.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1335521A1F40361F009AF77A /* WechatIMG58.jpeg */; };
+		13789AD21F80AFE90033D99C /* CCImagePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13789AD11F80AFE90033D99C /* CCImagePreviewView.m */; };
 		F8A6842F67B0D93F61ABC949 /* libPods-YLPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A0E98723EA96D459D97EF1 /* libPods-YLPhoto.a */; };
 /* End PBXBuildFile section */
 
@@ -891,7 +891,6 @@
 		132D56621F4479C500AB7E31 /* LDSDKHeartFlyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDSDKHeartFlyView.h; sourceTree = "<group>"; };
 		132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDSDKHeartFlyView.m; sourceTree = "<group>"; };
 		132E494A1F5C25F700526767 /* 741504439902_.pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 741504439902_.pic.jpg; sourceTree = "<group>"; };
-		132E494C1F5C25FD00526767 /* 751504439903_.pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 751504439903_.pic.jpg; sourceTree = "<group>"; };
 		132E49541F5C376B00526767 /* 761504444384_.pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 761504444384_.pic.jpg; sourceTree = "<group>"; };
 		132E49561F5C383500526767 /* timg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg1.jpg; sourceTree = "<group>"; };
 		132E49861F5C3BF100526767 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
@@ -930,6 +929,9 @@
 		1333F4021F496A2D003425D3 /* UIView+CCHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CCHUD.h"; sourceTree = "<group>"; };
 		1333F4031F496A2D003425D3 /* UIView+CCHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CCHUD.m"; sourceTree = "<group>"; };
 		1335521A1F40361F009AF77A /* WechatIMG58.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG58.jpeg; sourceTree = "<group>"; };
+		13789AD01F80AFE90033D99C /* CCImagePreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCImagePreviewView.h; sourceTree = "<group>"; };
+		13789AD11F80AFE90033D99C /* CCImagePreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCImagePreviewView.m; sourceTree = "<group>"; };
+		13789AD51F80D5570033D99C /* 751504439903.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 751504439903.jpg; sourceTree = "<group>"; };
 		22A0E98723EA96D459D97EF1 /* libPods-YLPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YLPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2538F45AD0A8A677841A0079 /* Pods-YLPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YLPhoto/Pods-YLPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		3B6F9B611442B97EBD9B7954 /* Pods-YLPhoto.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLPhoto.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-YLPhoto/Pods-YLPhoto.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
@@ -1570,6 +1572,8 @@
 				1333F3F51F496A2D003425D3 /* CCglCameraViewController.m */,
 				1333F3F61F496A2D003425D3 /* CCImagePreviewController.h */,
 				1333F3F71F496A2D003425D3 /* CCImagePreviewController.m */,
+				13789AD01F80AFE90033D99C /* CCImagePreviewView.h */,
+				13789AD11F80AFE90033D99C /* CCImagePreviewView.m */,
 				1333F3F81F496A2D003425D3 /* CCMotionManager.h */,
 				1333F3F91F496A2D003425D3 /* CCMotionManager.m */,
 				1333F3FA1F496A2D003425D3 /* CCTools.h */,
@@ -1597,12 +1601,12 @@
 				1303F22B1F657B230074A1B7 /* WechatIMG79.jpeg */,
 				1303F22C1F657B230074A1B7 /* WechatIMG80.jpeg */,
 				1303F22D1F657B230074A1B7 /* WechatIMG82.jpeg */,
+				13789AD51F80D5570033D99C /* 751504439903.jpg */,
 				1303F22E1F657B230074A1B7 /* WechatIMG83.jpeg */,
 				1303F22F1F657B230074A1B7 /* WechatIMG84.jpeg */,
 				132E49901F5C45ED00526767 /* timgC.jpg */,
 				132E49561F5C383500526767 /* timg1.jpg */,
 				132E49541F5C376B00526767 /* 761504444384_.pic.jpg */,
-				132E494C1F5C25FD00526767 /* 751504439903_.pic.jpg */,
 				132E494A1F5C25F700526767 /* 741504439902_.pic.jpg */,
 				13315B8A1F545FF600B82950 /* WechatIMG70.jpeg */,
 				1335521A1F40361F009AF77A /* WechatIMG58.jpeg */,
@@ -1993,7 +1997,6 @@
 				132B09E81F65476300B86663 /* text_font_thumbnail8@3x.png in Resources */,
 				132B097B1F65476300B86663 /* icon_function_stylize_a@3x.png in Resources */,
 				132B09FA1F65476300B86663 /* icon_fillinlight_b@3x.png in Resources */,
-				132E494D1F5C25FD00526767 /* 751504439903_.pic.jpg in Resources */,
 				132B094D1F65476300B86663 /* icon_edit_clip_b@3x.png in Resources */,
 				132B07631F65436500B86663 /* valenciaGradientMap.png in Resources */,
 				132B09F41F65476300B86663 /* icon_contrast_a@3x.png in Resources */,
@@ -2124,6 +2127,7 @@
 				132BFA861F6512E200B86663 /* FWInkwellFilter.m in Sources */,
 				1333F40E1F496A2D003425D3 /* UIView+CCAdditions.m in Sources */,
 				132BFA8A1F6512E200B86663 /* FWEarlybirdFilter.m in Sources */,
+				13789AD21F80AFE90033D99C /* CCImagePreviewView.m in Sources */,
 				132BFA3C1F65114C00B86663 /* FWMoreEffectView.m in Sources */,
 				132BFA461F65117800B86663 /* UIImage+FW.m in Sources */,
 				132D37861F5301F100601246 /* UIImage+fixOrientation.m in Sources */,

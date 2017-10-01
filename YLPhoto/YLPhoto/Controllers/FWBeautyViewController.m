@@ -17,6 +17,7 @@
 #import "FWBorderViewController.h"
 #import "FWFiltersViewController.h"
 #import "FWBlurViewController.h"
+#import "LDSDKHeartFlyView.h"
 
 @interface FWBeautyViewController ()
 {
@@ -43,17 +44,20 @@
     self.title = @"美化图片";
     
     modeView = [FWButton buttonWithType:UIButtonTypeCustom];
-    [modeView setTitle:@"去美容" forState:UIControlStateNormal];
-    [modeView setImage:[UIImage imageNamed:@"ic_function_meirong_a@2x.png"] forState:UIControlStateNormal];
-    [modeView setImage:[UIImage imageNamed:@"ic_function_meirong_b@2x.png"] forState:UIControlStateHighlighted];
+//    [modeView setTitle:@"去美容" forState:UIControlStateNormal];
+//    [modeView setImage:[UIImage imageNamed:@"ic_function_meirong_a@2x.png"] forState:UIControlStateNormal];
+//    [modeView setImage:[UIImage imageNamed:@"ic_function_meirong_b@2x.png"] forState:UIControlStateHighlighted];
+    [modeView setBackgroundImage:[UIImage imageNamed:@"741504439902_.pic.jpg"] forState:UIControlStateNormal];
     [modeView setBackgroundColor:[UIColor clearColor]];
     [modeView.titleLabel setFont:[UIFont systemFontOfSize:10]];
     beginY = HEIGHT - kHeight;
-    modeView.frame = CGRectMake(WIDTH - kWidth, beginY, kWidth, kHeight);
+    modeView.frame = CGRectMake(WIDTH - kWidth, beginY + 10 , kWidth, kHeight - 20);
+    modeView.layer.cornerRadius = modeView.bounds.size.width * 0.5;
+    modeView.layer.masksToBounds = YES;
     highlightedTextColor = [UIColor colorWithRed:19 / 255.0 green:105 / 255.0 blue:240 / 255.0 alpha:1.0];
     modeView.highlightedTextColor = highlightedTextColor;
     modeView.topPading = 3;
-    [modeView addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [modeView addTarget:self action:@selector(heartBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *tagImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mc_line@2x.png"]];
     tagImage.frame = CGRectMake(WIDTH - kWidth - 2, HEIGHT - kHeight + 10, 1, 50);
@@ -63,6 +67,12 @@
     [self initImageView];
     [self initScrolleView];
     [self initCloseBtn];
+}
+
+- (void)heartBtnClicked:(FWButton *)btn {
+    LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(self.view.size.width - 55, self.view.size.height - 55, 55, 55)];
+    [self.view addSubview:heartView];
+    [heartView animateInView:self.view];
 }
 
 // 配置关闭按键

@@ -320,7 +320,7 @@
     if (sender == self.btnClose) {
         
     }else if(sender == self.btnSave){
-        //        UIImageWriteToSavedPhotosAlbum(self.currentImage, nil, nil, nil);
+        UIImageWriteToSavedPhotosAlbum(self.currentImage, nil, nil, nil);
     }
     [self dismissViewControllerAnimated:YES completion:^{
         

@@ -25,6 +25,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "FLAnimatedImage.h"
 #import "FLAnimatedImageView.h"
+#import "CCImagePreviewView.h"
 
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
@@ -72,6 +73,8 @@
 
 @property (nonatomic , weak)   UIImageView *backImageView;
 @property (nonatomic,  weak)   UIButton *flashBtn;
+@property (nonatomic,  strong) CCImagePreviewView *previewView;
+@property (nonatomic,  assign) CMSampleBufferRef sampleBuffer;
 
 @end
 
@@ -296,6 +299,7 @@
 //    self.mView.hidden = YES;
 //    self.backImageView.hidden = NO;
 //    self.cameraView.hidden = YES;
+//    self.mView.crRotation = kGPUImageRotateRight;
     
     AVCaptureConnection *connection = [_imageOutput connectionWithMediaType:AVMediaTypeVideo];
     if (self.mGPUVideoCamera.inputCamera.position == AVCaptureDevicePositionFront) {
@@ -313,25 +317,48 @@
             [self showError:error];
             return ;
         }
-        
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        UIImage *currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
-        
-        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
-        vc.delegate = self;
-        
-        [self presentViewController:vc animated:YES completion:^{
-            
-        }];
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self presentViewController:vc animated:NO completion:^{
-//                self.mView.hidden = NO;
-//                self.backImageView.hidden = YES;
-//                self.cameraView.hidden = NO;
-//            }];
-//        });
-        
+//        [_captureSession stopRunning];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+            UIImage *currentFilteredVideoFrame;
+            if (!self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
+                currentFilteredVideoFrame = image;
+            }else {
+                currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
+            }
+            //        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
+            //        vc.delegate = self;
+            //        [self presentViewController:vc animated:YES completion:^{
+            //
+            //        }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CCImagePreviewView *previewView =[[CCImagePreviewView alloc] initWithImage:currentFilteredVideoFrame frame:self.view.bounds imgOrientation:orientationNew];
+                previewView.originImage = image;
+                previewView.alpha = 0;
+                __weak CCImagePreviewView *weakView = previewView;
+                previewView.presentFilterViewController = ^(FWBeautyViewController *fw) {
+                    [self presentViewController:fw animated:YES completion:^{
+                        [weakView removeFromSuperview];
+                    }];
+                };
+                [self.view addSubview:previewView];
+//                [_captureSession startRunning];
+                [UIView animateWithDuration:0.5 animations:^{
+                    previewView.alpha = 1;
+                } completion:^(BOOL finished) {
+                    
+                }];
+            });
+            //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //            [self presentViewController:vc animated:NO completion:^{
+            //                self.mView.hidden = NO;
+            //                self.backImageView.hidden = YES;
+            //                self.cameraView.hidden = NO;
+            //            }];
+            //        });
+        });
+
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
     
@@ -630,25 +657,21 @@
         [self setFlashMode:AVCaptureFlashModeOff];
     }
     if (_currentflashMode == AVCaptureFlashModeOn) {
-        self.flashBtn.backgroundColor = [UIColor grayColor];
+        self.flashBtn.backgroundColor = [UIColor lightGrayColor];
     }else {
         self.flashBtn.backgroundColor = [UIColor clearColor];
     }
     [self.mGPUVideoCamera rotateCamera];
     if (self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
         self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = NO;
-        NSLog(@"%@",[NSThread currentThread]);
+        [self.mGPUVideoCamera removeAllTargets];
+        [self.mGPUVideoCamera addTarget:self.mView];
+    }else {
+        self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
         [self.mGPUVideoCamera removeAllTargets];
 //        [self.mGPUVideoCamera addTarget:self.filter];
 //        [self.filter addTarget:self.mView];
         [self.mGPUVideoCamera addTarget:self.mView];
-    }else {
-        self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera = YES;
-        NSLog(@"%@",[NSThread currentThread]);
-        [self.mGPUVideoCamera removeAllTargets];
-        [self.mGPUVideoCamera addTarget:self.filter];
-        [self.filter addTarget:self.mView];
-        
     }
 //    self.mGPUVideoCamera.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     _captureSession = self.mGPUVideoCamera.captureSession;
@@ -868,7 +891,7 @@ static const NSString *CameraAdjustingExposureContext;
     id error = [self changeFlash:[self flashMode] == AVCaptureFlashModeOn?AVCaptureFlashModeOff:AVCaptureFlashModeOn];
     error?!fail?:fail(error):!succ?:succ();
     if (_currentflashMode == AVCaptureFlashModeOn) {
-        cameraView.flashBtn.backgroundColor = [UIColor grayColor];
+        cameraView.flashBtn.backgroundColor = [UIColor lightGrayColor];
     }else {
         cameraView.flashBtn.backgroundColor = [UIColor clearColor];
     }
