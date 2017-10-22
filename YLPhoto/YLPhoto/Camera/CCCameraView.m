@@ -17,6 +17,7 @@
 @property(nonatomic, strong) UIView *bottomView;   // 下面的bar
 @property(nonatomic, strong) UIView *focusView;    // 聚焦动画view
 @property(nonatomic, strong) UIView *exposureView; // 曝光动画view
+@property(nonatomic, strong) UIView *verticalView; // 垂直的bar
 
 @property(nonatomic, strong) UIButton *torchBtn;
 //@property(nonatomic, strong) UIButton *flashBtn;
@@ -35,6 +36,13 @@
         [self setupUI];
     }
     return self;
+}
+
+- (UIView *)verticalView {
+    if (_verticalView == nil) {
+        _verticalView = [[UIView alloc] initWithFrame:CGRectMake(15, self.height - 160, 30, 160)];
+    }
+    return _verticalView;
 }
 
 -(UIView *)topView{
@@ -91,6 +99,7 @@
     [self addSubview:self.bottomView];
     [self.previewView addSubview:self.focusView];
     [self.previewView addSubview:self.exposureView];
+    [self addSubview:self.verticalView];
     
     // 拍照
     UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -130,6 +139,7 @@
     [dismissBtn  addTarget:self action:@selector(dismissVC) forControlEvents:UIControlEventTouchUpInside];
     dismissBtn.frame = CGRectMake(15, 15, 40, 40);
     [self.topView addSubview:dismissBtn];
+//    [self.bottomView addSubview:dismissBtn];
     
     // 转换前后摄像头
     UIButton *switchCameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -139,18 +149,22 @@
     [switchCameraButton addTarget:self action:@selector(switchCameraClick:) forControlEvents:UIControlEventTouchUpInside];
 //    [switchCameraButton sizeToFit];
 //    switchCameraButton.center = CGPointMake(switchCameraButton.width/2+10, _topView.height/2);
-    switchCameraButton.frame = CGRectMake(self.width - 150, 16, 30, 30);
+//    switchCameraButton.frame = CGRectMake(self.width - 150, 16, 30, 30);
+    switchCameraButton.frame = CGRectMake(0, 15, 30, 30);
     [switchCameraButton sizeToFit];
-    [self.topView addSubview:switchCameraButton];
+//    [self.topView addSubview:switchCameraButton];
+    [self.verticalView addSubview:switchCameraButton];
     
     // 相册选择
     UIButton *photosButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [photosButton setBackgroundImage:[UIImage imageNamed:@"WechatIMG58.jpeg"] forState:UIControlStateNormal];
     [photosButton addTarget:self action:@selector(openPhotos:) forControlEvents:UIControlEventTouchUpInside];
-    photosButton.frame = CGRectMake(self.width - 100 , 18, 30, 30);
+//    photosButton.frame = CGRectMake(self.width - 100 , 18, 30, 30);
+    photosButton.frame = CGRectMake(2, 60, 30, 30);
     photosButton.layer.cornerRadius = 15;
     photosButton.layer.masksToBounds = YES;
-    [self.topView addSubview:photosButton];
+//    [self.topView addSubview:photosButton];
+    [self.verticalView addSubview:photosButton];
     
     // 补光
     UIButton *lightButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -171,10 +185,12 @@
     [flashButton setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
     [flashButton addTarget:self action:@selector(flashClick:) forControlEvents:UIControlEventTouchUpInside];
     [flashButton sizeToFit];
-    flashButton.center = CGPointMake(flashButton.width/2 + lightButton.right+12, _topView.height/2);
+//    flashButton.center = CGPointMake(flashButton.width/2 + lightButton.right+12, _topView.height/2);
+    flashButton.frame = CGRectMake(0, 100, 30, 30);
     flashButton.layer.cornerRadius = flashButton.size.width * 0.5;
     flashButton.layer.masksToBounds = YES;
-    [self.topView addSubview:flashButton];
+//    [self.topView addSubview:flashButton];
+    [self.verticalView addSubview:flashButton];
     _flashBtn = flashButton;
     
     // 重置对焦、曝光

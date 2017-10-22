@@ -27,6 +27,8 @@
 #import "FLAnimatedImageView.h"
 #import "CCImagePreviewView.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
 #define ISIOS9 __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 
 @interface CCCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,CCCameraViewDelegate,TZImagePickerControllerDelegate,CCImagePreviewControllerDelegate>
@@ -72,9 +74,11 @@
 @property (nonatomic , strong) GPUImageBrightnessFilter *brightnessFilter;
 
 @property (nonatomic , weak)   UIImageView *backImageView;
-@property (nonatomic,  weak)   UIButton *flashBtn;
-@property (nonatomic,  strong) CCImagePreviewView *previewView;
-@property (nonatomic,  assign) CMSampleBufferRef sampleBuffer;
+@property (nonatomic ,  weak)   UIButton *flashBtn;
+@property (nonatomic ,  strong) CCImagePreviewView *previewView;
+@property (nonatomic ,  assign) CMSampleBufferRef sampleBuffer;
+
+@property (nonatomic , strong)  MPVolumeView *volumeView;
 
 @end
 
@@ -155,12 +159,14 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    AudioSessionSetActive(true);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
+    AudioSessionSetActive(false);
 }
 
 - (void)dealloc{
@@ -322,11 +328,12 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             UIImage *currentFilteredVideoFrame;
-            if (!self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
-                currentFilteredVideoFrame = image;
-            }else {
-                currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
-            }
+            currentFilteredVideoFrame = image;
+//            if (!self.mGPUVideoCamera.horizontallyMirrorFrontFacingCamera) {
+//                currentFilteredVideoFrame = image;
+//            }else {
+//                currentFilteredVideoFrame = [self.filter imageByFilteringImage:image];
+//            }
             //        CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:currentFilteredVideoFrame frame:self.cameraView.previewView.frame imgOrientation:orientationNew];
             //        vc.delegate = self;
             //        [self presentViewController:vc animated:YES completion:^{
@@ -344,7 +351,7 @@
                 };
                 [self.view addSubview:previewView];
 //                [_captureSession startRunning];
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.25 animations:^{
                     previewView.alpha = 1;
                 } completion:^(BOOL finished) {
                     

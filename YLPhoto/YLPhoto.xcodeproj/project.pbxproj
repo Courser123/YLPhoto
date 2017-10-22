@@ -17,6 +17,8 @@
 		1303F2371F657B230074A1B7 /* WechatIMG84.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1303F22F1F657B230074A1B7 /* WechatIMG84.jpeg */; };
 		1303F23A1F657CC10074A1B7 /* bg_home_defaultRandom@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1303F2381F657CC10074A1B7 /* bg_home_defaultRandom@2x.jpg */; };
 		1303F23B1F657CC10074A1B7 /* bg_home_defaultRandom@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1303F2391F657CC10074A1B7 /* bg_home_defaultRandom@3x.jpg */; };
+		13202AB31F9C5970004AB50C /* effectViewInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13202AB21F9C5970004AB50C /* effectViewInfo.plist */; };
+		13202ABC1F9C75FB004AB50C /* 1508654692_341155.png in Resources */ = {isa = PBXBuildFile; fileRef = 13202ABB1F9C75FA004AB50C /* 1508654692_341155.png */; };
 		1326350E1F39FEED009B1234 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1326350D1F39FEED009B1234 /* main.m */; };
 		132635111F39FEED009B1234 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 132635101F39FEED009B1234 /* AppDelegate.m */; };
 		132635141F39FEED009B1234 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132635131F39FEED009B1234 /* MainViewController.m */; };
@@ -405,7 +407,6 @@
 		132BFA8E1F6512E200B86663 /* FWHefeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BFA7B1F6512E200B86663 /* FWHefeFilter.m */; };
 		132BFA911F65131600B86663 /* GPUImageFourInputFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BFA901F65131600B86663 /* GPUImageFourInputFilter.m */; };
 		132BFA941F65138D00B86663 /* GPUImageVibranceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BFA931F65138D00B86663 /* GPUImageVibranceFilter.m */; };
-		132BFA961F65169E00B86663 /* effectViewInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 132BFA951F65169E00B86663 /* effectViewInfo.plist */; };
 		132D37831F52DAA600601246 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D37821F52DAA600601246 /* GPUImageBeautifyFilter.m */; };
 		132D37861F5301F100601246 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D37851F5301F100601246 /* UIImage+fixOrientation.m */; };
 		132D56641F4479C500AB7E31 /* LDSDKHeartFlyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D56631F4479C500AB7E31 /* LDSDKHeartFlyView.m */; };
@@ -446,6 +447,8 @@
 		1303F22F1F657B230074A1B7 /* WechatIMG84.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG84.jpeg; sourceTree = "<group>"; };
 		1303F2381F657CC10074A1B7 /* bg_home_defaultRandom@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_home_defaultRandom@2x.jpg"; sourceTree = "<group>"; };
 		1303F2391F657CC10074A1B7 /* bg_home_defaultRandom@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_home_defaultRandom@3x.jpg"; sourceTree = "<group>"; };
+		13202AB21F9C5970004AB50C /* effectViewInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = effectViewInfo.plist; sourceTree = "<group>"; };
+		13202ABB1F9C75FA004AB50C /* 1508654692_341155.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1508654692_341155.png; sourceTree = "<group>"; };
 		132635091F39FEED009B1234 /* YLPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1326350D1F39FEED009B1234 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1326350F1F39FEED009B1234 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -883,7 +886,6 @@
 		132BFA901F65131600B86663 /* GPUImageFourInputFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFourInputFilter.m; sourceTree = "<group>"; };
 		132BFA921F65138D00B86663 /* GPUImageVibranceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageVibranceFilter.h; sourceTree = "<group>"; };
 		132BFA931F65138D00B86663 /* GPUImageVibranceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageVibranceFilter.m; sourceTree = "<group>"; };
-		132BFA951F65169E00B86663 /* effectViewInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = effectViewInfo.plist; sourceTree = "<group>"; };
 		132D37811F52DAA600601246 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
 		132D37821F52DAA600601246 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
 		132D37841F5301F100601246 /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
@@ -997,7 +999,7 @@
 				132635181F39FEED009B1234 /* Assets.xcassets */,
 				1326351A1F39FEED009B1234 /* LaunchScreen.storyboard */,
 				1326351D1F39FEED009B1234 /* Info.plist */,
-				132BFA951F65169E00B86663 /* effectViewInfo.plist */,
+				13202AB21F9C5970004AB50C /* effectViewInfo.plist */,
 				1326350C1F39FEED009B1234 /* Supporting Files */,
 			);
 			path = YLPhoto;
@@ -1593,6 +1595,7 @@
 		133552191F4035F3009AF77A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				13202ABB1F9C75FA004AB50C /* 1508654692_341155.png */,
 				1303F2381F657CC10074A1B7 /* bg_home_defaultRandom@2x.jpg */,
 				1303F2391F657CC10074A1B7 /* bg_home_defaultRandom@3x.jpg */,
 				1303F2281F657B230074A1B7 /* WechatIMG77.jpeg */,
@@ -1669,7 +1672,7 @@
 				TargetAttributes = {
 					132635081F39FEED009B1234 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = Y59HB6VK6F;
+						DevelopmentTeam = WFMGV3TZ73;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1712,7 +1715,6 @@
 				1303F2361F657B230074A1B7 /* WechatIMG83.jpeg in Resources */,
 				132B09461F65476300B86663 /* icon_clipScaleAny_a@2x.png in Resources */,
 				132B09BE1F65476300B86663 /* mosaic_style_1@3x.jpg in Resources */,
-				132BFA961F65169E00B86663 /* effectViewInfo.plist in Resources */,
 				132B07701F65437700B86663 /* lookup_soft_elegance_2.png in Resources */,
 				132B09CA1F65476300B86663 /* icon_btn_textbubble_a@3x.png in Resources */,
 				132B09BD1F65476300B86663 /* mosaic_style_1@2x.jpg in Resources */,
@@ -1746,6 +1748,7 @@
 				132B09C61F65476300B86663 /* share_tag_line@3x.png in Resources */,
 				132B09411F65476300B86663 /* icon_clipScale34_b@3x.png in Resources */,
 				132B0A031F65476300B86663 /* icon_shade_a@2x.png in Resources */,
+				13202ABC1F9C75FB004AB50C /* 1508654692_341155.png in Resources */,
 				132B07641F65436500B86663 /* valenciaMap.png in Resources */,
 				132B074C1F65436500B86663 /* hefeGradientMap.png in Resources */,
 				132B09E31F65476300B86663 /* text_font_thumbnail6@2x.png in Resources */,
@@ -1908,6 +1911,7 @@
 				132B094B1F65476300B86663 /* icon_edit_clip_a@3x.png in Resources */,
 				132B08D91F65476300B86663 /* icon_blur_line_b@3x.png in Resources */,
 				132B09971F65476300B86663 /* magic_brush_09@2x.png in Resources */,
+				13202AB31F9C5970004AB50C /* effectViewInfo.plist in Resources */,
 				132B09761F65476300B86663 /* icon_function_mosaic_a@2x.png in Resources */,
 				132B09E71F65476300B86663 /* text_font_thumbnail8@2x.png in Resources */,
 				132B09791F65476300B86663 /* icon_function_mosaic_b@3x.png in Resources */,
@@ -2302,7 +2306,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				DEVELOPMENT_TEAM = WFMGV3TZ73;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2318,7 +2322,7 @@
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.PicDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2333,7 +2337,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				DEVELOPMENT_TEAM = WFMGV3TZ73;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2349,7 +2353,7 @@
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.PicDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2407,7 +2411,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				DEVELOPMENT_TEAM = WFMGV3TZ73;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2423,7 +2427,7 @@
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.video--.YLPhoto";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meituandianping.Courser.PicDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

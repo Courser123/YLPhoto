@@ -48,6 +48,8 @@
     self.backgroundColor = [UIColor whiteColor];
     _image = [self scaleToSize:_image size:_frame.size];
     _image = [_image fixOrientation];
+    UIImage *waterMask = [UIImage imageNamed:@"1508654692_341155.png"];
+    _image = [self imageWithWaterMask:waterMask inRect:CGRectMake(0, _image.size.height - 120, _image.size.width, 60) image:_image];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];
     self.imageView = imageView;
     imageView.backgroundColor = [UIColor whiteColor];
@@ -200,6 +202,63 @@
 - (void)setOriginImage:(UIImage *)originImage {
     _originImage = [self scaleToSize:originImage size:_frame.size];
     _originImage = [_originImage fixOrientation];
+}
+
+#pragma mark -图片水印
+- (UIImage *)imageWithWaterMask:(UIImage*)mask inRect:(CGRect)rect image:(UIImage *)image
+{
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.0)
+    {
+        UIGraphicsBeginImageContextWithOptions([image size], NO, 0.0); // 0.0 for scale means "scale for device's main screen".
+    }
+#else
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 4.0)
+    {
+        UIGraphicsBeginImageContext([image size]);
+    }
+#endif
+    
+    //原图
+    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    //水印图
+    [mask drawInRect:rect];
+    
+    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newPic;
+}
+
+#pragma mark -文字水印
+- (UIImage *) imageWithStringWaterMark:(NSString *)markString inRect:(CGRect)rect color:(UIColor *)color font:(UIFont *)font image:(UIImage *)image
+{
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.0)
+    {
+        UIGraphicsBeginImageContextWithOptions([image size], NO, 0.0); // 0.0 for scale means "scale for device's main screen".
+    }
+#else
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 4.0)
+    {
+        UIGraphicsBeginImageContext([image size]);
+    }
+#endif
+    
+    //原图
+    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    
+    //文字颜色
+    [color set];
+    
+    //水印文字
+//    [markString drawInRect:rect withFont:font];
+    [markString drawInRect:rect withAttributes:@{NSFontAttributeName:font}];
+    
+    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newPic;
 }
 
 @end
