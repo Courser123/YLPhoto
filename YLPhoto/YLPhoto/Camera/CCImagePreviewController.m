@@ -298,8 +298,6 @@
     
     CGSize size = CGSizeMake(image.size.width/ks, image.size.height/ks);
     
-    
-    
     UIGraphicsBeginImageContext(size);
     
     CGRect rect = CGRectMake(0, 0, size.width, size.height);

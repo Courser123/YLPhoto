@@ -50,6 +50,7 @@
     _image = [_image fixOrientation];
     UIImage *waterMask = [UIImage imageNamed:@"1508654692_341155.png"];
     _image = [self imageWithWaterMask:waterMask inRect:CGRectMake(0, _image.size.height - 120, _image.size.width, 60) image:_image];
+    _originImage = _image;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];
     self.imageView = imageView;
     imageView.backgroundColor = [UIColor whiteColor];
@@ -192,7 +193,7 @@
     //    self.imageView.image = _image;
     //    btn.enabled = NO;
     
-    FWBeautyViewController *fw = [[FWBeautyViewController alloc] initWithImage:_originImage];
+    FWBeautyViewController *fw = [[FWBeautyViewController alloc] initWithImage:_image];
     if (self.presentFilterViewController) {
         self.presentFilterViewController(fw);
     }

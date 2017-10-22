@@ -26,7 +26,7 @@
         _strokeColor = [UIColor whiteColor];
 //        _fillColor = DMRandColor;
         
-        int randomIdx = arc4random_uniform(3);
+        int randomIdx = arc4random_uniform(4);
         switch (randomIdx) {
             case 0:
                 _fillColor = DMRGBColor(255, 59, 107);
@@ -36,6 +36,9 @@
                 break;
             case 2:
                 _fillColor = DMRGBColor(136, 101, 238);
+                break;
+            case 3:
+                _fillColor = [UIColor greenColor];
                 break;
             default:
                 break;
