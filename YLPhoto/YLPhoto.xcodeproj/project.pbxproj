@@ -2331,7 +2331,7 @@
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mylove.yilan;
+				PRODUCT_BUNDLE_IDENTIFIER = myLove.yilan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db8b4e94-1380-405c-a470-7143acb3777f";
 				PROVISIONING_PROFILE_SPECIFIER = sina_hoc_012;
@@ -2363,7 +2363,7 @@
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mylove.yilan;
+				PRODUCT_BUNDLE_IDENTIFIER = myLove.yilan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db8b4e94-1380-405c-a470-7143acb3777f";
 				PROVISIONING_PROFILE_SPECIFIER = sina_hoc_012;
@@ -2438,7 +2438,7 @@
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 					"$(PROJECT_DIR)/YLPhoto/Images/FWMeituApp/3rd\\ lib/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mylove.yilan;
+				PRODUCT_BUNDLE_IDENTIFIER = myLove.yilan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db8b4e94-1380-405c-a470-7143acb3777f";
 				PROVISIONING_PROFILE_SPECIFIER = sina_hoc_012;
