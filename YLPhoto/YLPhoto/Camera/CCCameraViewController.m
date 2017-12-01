@@ -101,7 +101,7 @@
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.backImageView = backImageView;
     backImageView.hidden = YES;
-    backImageView.image = [UIImage imageNamed:@"bg_home_defaultRandom@2x.jpg"];
+    backImageView.image = [UIImage imageNamed:@"timg1.jpg"];
     [self.view addSubview:backImageView];
     
     self.cameraView = [[CCCameraView alloc] initWithFrame:self.view.bounds];

@@ -432,6 +432,8 @@
 		1333F40E1F496A2D003425D3 /* UIView+CCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F4011F496A2D003425D3 /* UIView+CCAdditions.m */; };
 		1333F40F1F496A2D003425D3 /* UIView+CCHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1333F4031F496A2D003425D3 /* UIView+CCHUD.m */; };
 		1335521B1F40361F009AF77A /* WechatIMG58.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1335521A1F40361F009AF77A /* WechatIMG58.jpeg */; };
+		13551D431FD1C1DB0053D551 /* WechatIMG86.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 13551D421FD1C1DB0053D551 /* WechatIMG86.jpeg */; };
+		13551D451FD1C6EB0053D551 /* 郑国锋-倚栏听风.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 13551D441FD1C6EB0053D551 /* 郑国锋-倚栏听风.mp3 */; };
 		13789AD21F80AFE90033D99C /* CCImagePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13789AD11F80AFE90033D99C /* CCImagePreviewView.m */; };
 		F8A6842F67B0D93F61ABC949 /* libPods-YLPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A0E98723EA96D459D97EF1 /* libPods-YLPhoto.a */; };
 /* End PBXBuildFile section */
@@ -931,6 +933,8 @@
 		1333F4021F496A2D003425D3 /* UIView+CCHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CCHUD.h"; sourceTree = "<group>"; };
 		1333F4031F496A2D003425D3 /* UIView+CCHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CCHUD.m"; sourceTree = "<group>"; };
 		1335521A1F40361F009AF77A /* WechatIMG58.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG58.jpeg; sourceTree = "<group>"; };
+		13551D421FD1C1DB0053D551 /* WechatIMG86.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG86.jpeg; sourceTree = "<group>"; };
+		13551D441FD1C6EB0053D551 /* 郑国锋-倚栏听风.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "郑国锋-倚栏听风.mp3"; sourceTree = "<group>"; };
 		13789AD01F80AFE90033D99C /* CCImagePreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCImagePreviewView.h; sourceTree = "<group>"; };
 		13789AD11F80AFE90033D99C /* CCImagePreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCImagePreviewView.m; sourceTree = "<group>"; };
 		13789AD51F80D5570033D99C /* 751504439903.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 751504439903.jpg; sourceTree = "<group>"; };
@@ -1595,6 +1599,7 @@
 		133552191F4035F3009AF77A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				13551D441FD1C6EB0053D551 /* 郑国锋-倚栏听风.mp3 */,
 				13202ABB1F9C75FA004AB50C /* 1508654692_341155.png */,
 				1303F2381F657CC10074A1B7 /* bg_home_defaultRandom@2x.jpg */,
 				1303F2391F657CC10074A1B7 /* bg_home_defaultRandom@3x.jpg */,
@@ -1603,6 +1608,7 @@
 				1303F22A1F657B230074A1B7 /* WechatIMG78.jpeg */,
 				1303F22B1F657B230074A1B7 /* WechatIMG79.jpeg */,
 				1303F22C1F657B230074A1B7 /* WechatIMG80.jpeg */,
+				13551D421FD1C1DB0053D551 /* WechatIMG86.jpeg */,
 				1303F22D1F657B230074A1B7 /* WechatIMG82.jpeg */,
 				13789AD51F80D5570033D99C /* 751504439903.jpg */,
 				1303F22E1F657B230074A1B7 /* WechatIMG83.jpeg */,
@@ -1817,6 +1823,7 @@
 				132B073F1F65436500B86663 /* 1977map.png in Resources */,
 				132B09331F65476300B86663 /* icon_clipScale169_a@3x.png in Resources */,
 				132635191F39FEED009B1234 /* Assets.xcassets in Resources */,
+				13551D451FD1C6EB0053D551 /* 郑国锋-倚栏听风.mp3 in Resources */,
 				132B093F1F65476300B86663 /* icon_clipScale34_a@3x.png in Resources */,
 				132B07731F65438100B86663 /* effect.png in Resources */,
 				132B0A171F65476300B86663 /* icon_autobeauty5_a@2x.png in Resources */,
@@ -2033,6 +2040,7 @@
 				132B09361F65476300B86663 /* icon_clipScale23_a@2x.png in Resources */,
 				132B09B01F65476300B86663 /* icon_mosaic_eraser_a@3x.png in Resources */,
 				132B09F11F65476300B86663 /* icon_colourTemperature_b@2x.png in Resources */,
+				13551D431FD1C1DB0053D551 /* WechatIMG86.jpeg in Resources */,
 				132B09441F65476300B86663 /* icon_clipScale43_b@2x.png in Resources */,
 				132B092D1F65476300B86663 /* icon_clip_confim@3x.png in Resources */,
 				132B0A161F65476300B86663 /* icon_autobeauty4_b@3x.png in Resources */,

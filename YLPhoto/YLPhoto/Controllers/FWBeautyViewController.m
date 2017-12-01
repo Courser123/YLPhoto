@@ -70,7 +70,8 @@
 }
 
 - (void)heartBtnClicked:(FWButton *)btn {
-    LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(self.view.size.width - 55, self.view.size.height - 55, 55, 55)];
+//    LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(self.view.size.width - 55, self.view.size.height - 55, 55, 55)];
+    LDSDKHeartFlyView *heartView = [[LDSDKHeartFlyView alloc] initWithFrame:CGRectMake(arc4random_uniform(self.view.size.width - 30), arc4random_uniform(self.view.size.height), 55, 55)];
     [self.view addSubview:heartView];
     [heartView animateInView:self.view];
 }
