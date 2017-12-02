@@ -1678,8 +1678,8 @@
 				TargetAttributes = {
 					132635081F39FEED009B1234 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = WFMGV3TZ73;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = K7Q78RNE6D;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -2312,10 +2312,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = WFMGV3TZ73;
+				DEVELOPMENT_TEAM = K7Q78RNE6D;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2333,8 +2333,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = myLove.yilan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "db8b4e94-1380-405c-a470-7143acb3777f";
+				PROVISIONING_PROFILE_SPECIFIER = sina_hoc_012;
 			};
 			name = Debug;
 		};
@@ -2344,10 +2344,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = WFMGV3TZ73;
+				DEVELOPMENT_TEAM = K7Q78RNE6D;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2365,8 +2365,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = myLove.yilan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "db8b4e94-1380-405c-a470-7143acb3777f";
+				PROVISIONING_PROFILE_SPECIFIER = sina_hoc_012;
 			};
 			name = Release;
 		};
@@ -2419,10 +2419,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Jilian Web Tech Limited";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = WFMGV3TZ73;
+				DEVELOPMENT_TEAM = K7Q78RNE6D;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YLPhoto/Camera/CCCamera.pch";
 				INFOPLIST_FILE = YLPhoto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2440,8 +2440,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = myLove.yilan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "db8b4e94-1380-405c-a470-7143acb3777f";
+				PROVISIONING_PROFILE_SPECIFIER = sina_hoc_012;
 			};
 			name = "ad hoc distribution";
 		};
