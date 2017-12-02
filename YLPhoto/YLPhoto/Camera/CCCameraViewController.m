@@ -55,6 +55,9 @@
     BOOL					   _readyToRecordAudio;
     BOOL                       _recording;
     AVCaptureFlashMode         _currentflashMode; // 当前闪光灯的模式
+    BOOL                       isIntoBg;
+    UISlider                   *volumeViewSlider;
+    NSDate                     *_lastLongPressDate;
 }
 
 @property(nonatomic, strong) CCCameraView *cameraView;
@@ -79,6 +82,7 @@
 @property (nonatomic ,  assign) CMSampleBufferRef sampleBuffer;
 
 @property (nonatomic , strong)  MPVolumeView *volumeView;
+@property (nonatomic, assign) CGFloat volume;
 
 @end
 
@@ -153,24 +157,56 @@
     else{
         [self showError:error];
     }
+    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+    
+    //进入后台
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(intoBackg) name:UIApplicationDidBecomeActiveNotification object:nil];
+    //进入前台
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(returnBackg) name:UIApplicationWillResignActiveNotification object:nil];
+    
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+    volumeView.hidden = NO;
+    volumeView.center = CGPointMake(-550,370);//设置中心点，让音量视图不显示在屏幕中
+    [volumeView sizeToFit];
+    [volumeView userActivity];
+    [self.view addSubview:volumeView];
+    
+    volumeViewSlider = [[UISlider alloc] init];
+    for (UIView *view in [volumeView subviews]){
+        if ([view.class.description isEqualToString:@"MPVolumeSlider"]){
+            volumeViewSlider = (UISlider *)view;
+            break;
+        }
+    }
+    
+    self.volume = [[AVAudioSession sharedInstance] outputVolume];
+    
+    _lastLongPressDate = [NSDate date];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    AudioSessionSetActive(true);
+//    AudioSessionSetActive(true);
+    self.volume = [[AVAudioSession sharedInstance] outputVolume];
+     isIntoBg = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
-    AudioSessionSetActive(false);
+//    AudioSessionSetActive(false);
+     isIntoBg = YES;
 }
 
 - (void)dealloc{
     NSLog(@"相机界面销毁了");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 #pragma mark - 输入设备(摄像头)
@@ -761,6 +797,7 @@
         CCImagePreviewController *vc = [[CCImagePreviewController alloc] initWithImage:image frame:self.view.frame imgOrientation:UIDeviceOrientationUnknown];
         vc.delegate = self;
         [self presentViewController:vc animated:NO completion:^{
+            isIntoBg = YES;
             self.mView.hidden = NO;
             self.backImageView.hidden = YES;
         }];
@@ -839,6 +876,7 @@ static const NSString *CameraAdjustingExposureContext;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    
     if (context == &CameraAdjustingExposureContext) {                     
         AVCaptureDevice *device = (AVCaptureDevice *)object;
         if (!device.isAdjustingExposure && [device isExposureModeSupported:AVCaptureExposureModeLocked]) {
@@ -1111,6 +1149,52 @@ static const NSString *CameraAdjustingExposureContext;
 
 - (void)present:(UIViewController *)vc {
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - 音量键拍照
+- (void)intoBackg
+{
+    NSLog(@"***************后台出来*****************");
+//    volumeViewSlider.value = self.volume;
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+    self.volume = [[AVAudioSession sharedInstance] outputVolume];
+    isIntoBg = NO;
+}
+
+- (void)returnBackg
+{
+    NSLog(@"***************进入后台*****************");
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+//    volumeViewSlider.value = self.volume;
+    isIntoBg = YES;
+}
+
+-(void)volumeChanged:(NSNotification *)noti
+
+{
+    
+    NSDate *now = [NSDate date];
+    NSTimeInterval interval = [now timeIntervalSinceDate:_lastLongPressDate];
+    _lastLongPressDate = now;
+    
+    if (interval < 0.2f) {
+        return;
+    }
+    
+    NSString *str1 = [[noti userInfo]objectForKey:@"AVSystemController_AudioCategoryNotificationParameter"];
+    NSString *str2 = [[noti userInfo]objectForKey:@"AVSystemController_AudioVolumeChangeReasonNotificationParameter"];
+    //此处判断将音量调节和铃声调节都包括进来进行响应
+    if (([str1 isEqualToString:@"Audio/Video"] || [str1 isEqualToString:@"Ringtone"]) && ([str2 isEqualToString:@"ExplicitVolumeChange"]))
+    {
+        if(isIntoBg == NO){
+            //这里做你想要的进行的操作
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+            volumeViewSlider.value = self.volume;
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+            [self takePhoto];
+        }
+    }
+    
 }
 
 @end

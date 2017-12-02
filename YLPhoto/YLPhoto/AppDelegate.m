@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
 
@@ -39,6 +40,15 @@
     
     [self.window makeKeyAndVisible];
     
+    // 音量键相关
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    NSError *error;
+    [[AVAudioSession sharedInstance] setActive:YES error:&error];
+    //注，ios9上不加这一句会无效
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
     return YES;
 }
 
@@ -61,6 +71,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [[AVAudioSession sharedInstance] setActive:YES error:NULL];
 }
 
 
